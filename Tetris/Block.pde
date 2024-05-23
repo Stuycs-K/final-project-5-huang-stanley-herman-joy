@@ -21,4 +21,8 @@ public class Block{
   void setY(int newY){
     this.ycor = newY;
   }
+  void display(){
+    design.resize(100, 0);
+    image(design, xcor, ycor);
+  }
 }
