@@ -1,10 +1,9 @@
 public class Block{
-  int size;
+  final static int size = 50;
   PImage design;
   int xcor;
   int ycor;
   public Block(int x, int y, PImage image){
-    size = 50;
     xcor = x;
     ycor = y;
     design = image;
@@ -22,7 +21,7 @@ public class Block{
     this.ycor = newY;
   }
   void display(){
-    design.resize(100, 0);
+    design.resize(50, 50);
     image(design, xcor, ycor);
   }
 }
