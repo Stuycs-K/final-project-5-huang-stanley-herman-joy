@@ -1,6 +1,6 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Joy Herman
 
 ### date x
 
@@ -11,11 +11,11 @@ info
 info
 
 
-## GROUP MEMBER 2
+## Stanley Huang
 
-### date x
+### 5/22
 
-info
+Made the files, added method names to the classes, and wrote simple methods for Block
 
 ### date y
 
