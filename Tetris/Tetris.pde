@@ -3,6 +3,9 @@ int[] heights;
 Block bob;
 Piece joe;
 void draw(){
+  background(255);
+  joe.display();
+  joe.fall();
 }
 void keyPressed(){
   if (key == 'a') {
