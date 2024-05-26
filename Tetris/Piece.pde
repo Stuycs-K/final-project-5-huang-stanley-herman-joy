@@ -2,10 +2,12 @@ public class Piece{
   Block[][] blocks;
   PImage design = loadImage("redcar.png");
   public Piece(int num){
-    blocks = new Block[2][2];
+    blocks = new Block[2][3];
     if (num == 1){
       blocks[0][0] = new Block(0, 0, design);
       blocks[0][1] = new Block(0, 50, design);
+      blocks[0][2] = new Block(0, 100, design);
+      blocks[1][1] = new Block(50, 50, design);
     }
   }
   void fall(){
@@ -30,7 +32,7 @@ public class Piece{
     for (int i = 0; i < blocks.length; i++){
       for (int j = 0; j < blocks[0].length; j++){
         if (blocks[i][j] != null && blocks[i][j].getY() != 500 - (blocks[0].length - j) * 50){
-          if (blocks[i][j].getX() != 0){
+          if (blocks[i][j].getX() != i * 50){
             blocks[i][j].setX(blocks[i][j].getX() - 50);
           }
         }
@@ -41,7 +43,7 @@ public class Piece{
     for (int i = 0; i < blocks.length; i++){
       for (int j = 0; j < blocks[0].length; j++){
         if (blocks[i][j] != null && blocks[i][j].getY() != 500 - (blocks[0].length - j) * 50){
-          if (blocks[i][j].getX() != 450){
+          if (blocks[i][j].getX() != 500 - (blocks.length - i) * 50){
             blocks[i][j].setX(blocks[i][j].getX() + 50);
           }
         }
