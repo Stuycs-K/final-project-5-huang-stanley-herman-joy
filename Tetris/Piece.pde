@@ -33,8 +33,8 @@ public class Piece{
     return false;
   }
   void rotate(){
-    Block[][] newblocks = new Block[blocks[0].length][blocks.length];
-    if (true){
+    if (topleft[0] < 550 - blocks[0].length * 50 && topleft[1] < 500 - blocks.length * 50){
+      Block[][] newblocks = new Block[blocks[0].length][blocks.length];
       for (int i = 0; i < newblocks.length; i++){
         for (int j = 0; j < newblocks[0].length; j++){
           if (blocks[j][2 - i] != null){

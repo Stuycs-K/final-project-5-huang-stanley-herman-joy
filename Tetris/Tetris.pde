@@ -1,9 +1,10 @@
 int points;
 Block[][] blocks;
-Block bob;
 Piece joe;
 void draw(){
   joe.display();
+  System.out.println(joe.wide + "," + joe.tall);
+  System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
   if (!joe.fall()){
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = 0; j < joe.blocks[0].length; j++){
@@ -33,7 +34,6 @@ void keyPressed(){
 void setup(){
   size(500, 500);
   background(255);
-  bob = new Block(100, 100, loadImage("redcar.png"));
   joe = new Piece(1);
   joe.fall();
   joe.display();
