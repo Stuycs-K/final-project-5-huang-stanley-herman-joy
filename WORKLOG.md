@@ -17,6 +17,6 @@ info
 
 Made the files, added method names to the classes, and wrote simple methods for Block
 
-### date y
+### 5/23
 
-info
+Wrote additional Block methods and started to write fall()
