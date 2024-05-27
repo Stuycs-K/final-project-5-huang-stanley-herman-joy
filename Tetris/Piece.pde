@@ -15,33 +15,42 @@ public class Piece{
       wide = 2;
     }
   }
-  void fall(){
+  boolean fall(){
     if (topleft[1] < 500 - (tall * 50)){
       for (int i = 0; i < blocks.length; i++){
         for (int j = 0; j < blocks[0].length; j++){
           if (blocks[i][j] != null){
-              blocks[i][j].setY(blocks[i][j].getY() + 1);
+            noStroke();
+            square(blocks[i][j].getX(), blocks[i][j].getY(), 50);
+            blocks[i][j].setY(blocks[i][j].getY() + 1);
           }
         }
       }
       topleft[1]++;
+      display();
+      return true;
     }
+    return false;
   }
   void rotate(){
     Block[][] newblocks = new Block[blocks[0].length][blocks.length];
     if (true){
       for (int i = 0; i < newblocks.length; i++){
         for (int j = 0; j < newblocks[0].length; j++){
-          if (blocks[j][i] != null){
-            blocks[j][i].setX(topleft[0] + i * 50);
-            blocks[j][i].setY(topleft[1] + j * 50);
-          newblocks[i][j] = blocks[j][i];
+          if (blocks[j][2 - i] != null){
+            noStroke();
+            square(blocks[j][2 - i].getX(), blocks[j][2 - i].getY(), 50);
+            blocks[j][2 - i].setX(topleft[0] + i * 50);
+            blocks[j][2 - i].setY(topleft[1] + j * 50);
+            newblocks[i][j] = blocks[j][2 - i];
           }
         }
       }
-      background(255);
       this.blocks = newblocks;
       this.display();
+      int x = tall;
+      tall = wide;
+      wide = x;
     }
   }
   void plunge(){
@@ -52,7 +61,9 @@ public class Piece{
       for (int i = 0; i < blocks.length; i++){
         for (int j = 0; j < blocks[0].length; j++){
           if (blocks[i][j] != null){
-              blocks[i][j].setX(blocks[i][j].getX() - 50);
+            noStroke();
+            square(blocks[i][j].getX(), blocks[i][j].getY(), 50);
+            blocks[i][j].setX(blocks[i][j].getX() - 50);
           }
         }
       }
@@ -64,7 +75,9 @@ public class Piece{
       for (int i = 0; i < blocks.length; i++){
         for (int j = 0; j < blocks[0].length; j++){
           if (blocks[i][j] != null){
-              blocks[i][j].setX(blocks[i][j].getX() + 50);
+            noStroke();
+            square(blocks[i][j].getX(), blocks[i][j].getY(), 50);
+            blocks[i][j].setX(blocks[i][j].getX() + 50);
           }
         }
       }
