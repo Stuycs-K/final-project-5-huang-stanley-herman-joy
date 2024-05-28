@@ -52,6 +52,7 @@ public class Piece{
       int x = tall;
       tall = wide;
       wide = x;
+      findtopleft();
     }
   }
   void plunge(){
@@ -101,5 +102,16 @@ public class Piece{
         }
       }
     }
+  }
+  void findtopleft(){
+     if (blocks[0].equals(new Block[blocks[0].length])){
+       topleft[0] += 50;
+     }
+     for (int i = 0; i < blocks.length; i++){
+       if (blocks[i][0] != null){
+         return;
+       }
+     }
+     topleft[1] += 50;
   }
 }
