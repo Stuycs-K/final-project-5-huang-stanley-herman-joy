@@ -9,10 +9,23 @@ void draw(){
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = 0; j < joe.blocks[0].length; j++){
         if (joe.blocks[i][j] != null){
-          blocks[joe.topleft[0] / 50 + i][joe.topleft[1] / 50 + j] = joe.blocks[i][j];
+          blocks[joe.topleft[0] / 50 + i][joe.topleft[1] / 50 - j] = joe.blocks[i][j];
         }
       }
       display();
+    }
+    for (int i = 0; i < blocks.length; i++){
+      boolean filled = true;
+      for (int j = 0; j < blocks[0].length; j++){
+        if (blocks[i][j] == null){
+          filled = false;
+          break;
+        }
+      }
+      if (filled == true){
+        blocks[i] = new Block[10];
+        display();
+      }
     }
     joe = new Piece(1);
   }
