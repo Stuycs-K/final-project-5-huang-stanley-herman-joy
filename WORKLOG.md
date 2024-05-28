@@ -20,3 +20,7 @@ Made the files, added method names to the classes, and wrote simple methods for 
 ### 5/23
 
 Wrote additional Block methods and started to write fall()
+
+### 5/26
+
+Wrote rotate(), fall() and moveleft()/moveright() works for bigger Pieces, Pieces that reach the bottom stay on screen
