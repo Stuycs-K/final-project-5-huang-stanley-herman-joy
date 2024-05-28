@@ -1,20 +1,31 @@
 int points;
 Block[][] blocks;
 Piece joe;
+boolean plunge = false;
 void draw(){
   joe.display();
   System.out.println(joe.wide + "," + joe.tall);
   System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
-  if (!joe.fall()){
-    for (int i = 0; i < joe.blocks.length; i++){
-      for (int j = 0; j < joe.blocks[0].length; j++){
-        if (joe.blocks[i][j] != null){
-          blocks[joe.topleft[0] / 50 + i][joe.topleft[1] / 50 + j] = joe.blocks[i][j];
+    if (!joe.fall()){
+      for (int i = 0; i < joe.blocks.length; i++){
+        for (int j = 0; j < joe.blocks[0].length; j++){
+          if (joe.blocks[i][j] != null){
+          }
         }
+        display();
       }
-      display();
+      joe = new Piece(1);
     }
-    joe = new Piece(1);
+  if (plunge) {
+    for (int i = 0; i < joe.blocks.length; i++){
+        for (int j = 0; j < joe.blocks[0].length; j++){
+          if (joe.blocks[i][j] != null){
+          }
+        }
+        display();
+      }
+      joe = new Piece(1);
+      plunge = false;
   }
 }
 void keyPressed(){
@@ -31,6 +42,7 @@ void keyPressed(){
     joe.display();
   }
   if (key == 's') {
+    plunge = true;
     joe.plunge();
     joe.display();
   }

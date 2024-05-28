@@ -17,7 +17,7 @@ public class Piece{
   }
 
   boolean fall(){
-    if (topleft[1] < 500 - (tall * 50)){
+    if (topleft[1] <= 500 - (tall * 50)){
       for (int i = 0; i < blocks.length; i++){
         for (int j = 0; j < blocks[0].length; j++){
           if (blocks[i][j] != null){
@@ -27,7 +27,7 @@ public class Piece{
           }
         }
       }
-      topleft[1]++;
+      topleft[1] += 1;
       display();
       return true;
     }
@@ -60,7 +60,7 @@ public class Piece{
         if (blocks[i][j] != null){
             noStroke();
             square(blocks[i][j].getX(), blocks[i][j].getY(), 50);
-            blocks[i][j].setY(460);
+            blocks[i][j].setY(450 - (j * 50));
           }
       }
     }
