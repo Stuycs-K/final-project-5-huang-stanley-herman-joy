@@ -2,13 +2,13 @@
 
 ## Joy Herman
 
-### date x
+### 5/24
 
-info
+wrote the left and right methods and made sure they didn't go out of the screen
 
-### date y
+### 5/27
 
-info
+wrote a buggy plunge
 
 
 ## Stanley Huang
