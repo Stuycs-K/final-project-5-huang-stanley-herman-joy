@@ -10,24 +10,14 @@ void draw(){
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = 0; j < joe.blocks[0].length; j++){
         if (joe.blocks[i][j] != null){
+          System.out.println(joe.topleft[1]);
           blocks[joe.topleft[0] / 50 + i][joe.topleft[1] / 50 - j] = joe.blocks[i][j];
         }
         display();
       }
-      joe = new Piece(1);
     }
-  if (plunge) {
-    for (int i = 0; i < joe.blocks.length; i++){
-        for (int j = 0; j < joe.blocks[0].length; j++){
-          if (joe.blocks[i][j] != null){
-          }
-        }
-        display();
-      }
-      joe = new Piece(1);
-      plunge = false;
+    joe = new Piece(1);
   }
-}
 }
 void keyPressed(){
   if (key == 'a') {

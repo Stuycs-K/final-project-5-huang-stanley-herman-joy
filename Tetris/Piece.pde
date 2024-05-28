@@ -17,7 +17,7 @@ public class Piece{
   }
 
   boolean fall(){
-    if (topleft[1] <= 500 - (tall * 50)){
+    if (topleft[1] < 500 - (tall * 50)){
       for (int i = 0; i < blocks.length; i++){
         for (int j = 0; j < blocks[0].length; j++){
           if (blocks[i][j] != null){
@@ -65,6 +65,7 @@ public class Piece{
           }
       }
     }
+    topleft[1] = 500 - (tall * 50);
   }
   void moveleft(){
     if (topleft[0] != 0){
