@@ -55,7 +55,15 @@ public class Piece{
     }
   }
   void plunge(){
-    
+    for (int i = 0; i < blocks.length; i++) {
+      for (int j = 0; j < blocks[0].length; j++) {
+        if (blocks[i][j] != null){
+            noStroke();
+            square(blocks[i][j].getX(), blocks[i][j].getY(), 50);
+            blocks[i][j].setY(460);
+          }
+      }
+    }
   }
   void moveleft(){
     if (topleft[0] != 0){

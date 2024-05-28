@@ -30,6 +30,10 @@ void keyPressed(){
     joe.rotate();
     joe.display();
   }
+  if (key == 's') {
+    joe.plunge();
+    joe.display();
+  }
 }
 void setup(){
   size(500, 500);
