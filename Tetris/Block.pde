@@ -7,6 +7,7 @@ public class Block{
     xcor = x;
     ycor = y;
     design = image;
+    design.resize(50, 50);
   }
   public int getX(){
     return xcor;
@@ -21,7 +22,6 @@ public class Block{
     this.ycor = newY;
   }
   void display(){
-    design.resize(50, 50);
     image(design, xcor, ycor);
   }
 }
