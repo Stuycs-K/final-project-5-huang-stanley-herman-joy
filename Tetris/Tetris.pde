@@ -24,7 +24,7 @@ void draw(){
       }
     }
 
-    joe = new Piece(1);
+    joe = new Piece(5);
   }
 }
 void keyPressed(){

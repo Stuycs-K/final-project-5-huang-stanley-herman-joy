@@ -7,7 +7,7 @@ public class Piece{
   ArrayList<Integer> bottom;
   public Piece(int num){
     topleft = new int[]{0, 0};
-    blocks = new Block[3][3];
+    blocks = new Block[4][4];
     if (num == 1){
       blocks[0][0] = new Block(topleft[0], topleft[0], design);
       blocks[0][1] = new Block(topleft[0], topleft[0] + 50, design);
@@ -15,6 +15,38 @@ public class Piece{
       blocks[1][1] = new Block(topleft[0] + 50, topleft[0] + 50, design);
       tall = 3;
       wide = 2;
+    }
+    if (num == 2) {
+      blocks[0][0] = new Block(topleft[0], topleft[0], design);
+      blocks[0][1] = new Block(topleft[0], topleft[0] + 50, design);
+      blocks[0][2] = new Block(topleft[0], topleft[0] + 100, design);
+      blocks[1][2] = new Block(topleft[0] + 50, topleft[0] + 100, design);
+      tall = 3;
+      wide = 2;
+    }
+    if (num == 3) {
+      blocks[0][0] = new Block(topleft[0], topleft[0], design);
+      blocks[0][1] = new Block(topleft[0], topleft[0] + 50, design);
+      blocks[0][2] = new Block(topleft[0], topleft[0] + 100, design);
+      blocks[1][0] = new Block(topleft[0] + 50, topleft[0], design);
+      tall = 3;
+      wide = 2;  
+    }
+    if (num == 4) {
+      blocks[0][0] = new Block(topleft[0], topleft[0], design);
+      blocks[0][1] = new Block(topleft[0], topleft[0] + 50, design);
+      blocks[1][0] = new Block(topleft[0] + 50, topleft[0], design);
+      blocks[1][1] = new Block(topleft[0] + 50, topleft[0] + 50, design);
+      tall = 2;
+      wide = 2;
+    }
+    if (num == 5) {
+      blocks[0][0] = new Block(topleft[0], topleft[0], design);
+      blocks[0][1] = new Block(topleft[0], topleft[0] + 50, design);
+      blocks[0][2] = new Block(topleft[0], topleft[0] + 100, design);
+      blocks[0][3] = new Block(topleft[0], topleft[0] + 150, design);
+      tall = 4;
+      wide = 1;
     }
   }
 
@@ -41,12 +73,12 @@ public class Piece{
       Block[][] newblocks = new Block[blocks[0].length][blocks.length];
       for (int i = 0; i < newblocks.length; i++){
         for (int j = 0; j < newblocks[0].length; j++){
-          if (blocks[j][2 - i] != null){
+          if (blocks[j][3 - i] != null){
             noStroke();
-            square(blocks[j][2 - i].getX(), blocks[j][2 - i].getY(), 50);
-            blocks[j][2 - i].setX(topleft[0] + i * 50);
-            blocks[j][2 - i].setY(topleft[1] + j * 50);
-            newblocks[i][j] = blocks[j][2 - i];
+            square(blocks[j][3 - i].getX(), blocks[j][3 - i].getY(), 50);
+            blocks[j][3 - i].setX(topleft[0] + i * 50);
+            blocks[j][3 - i].setY(topleft[1] + j * 50);
+            newblocks[i][j] = blocks[j][3 - i];
           }
         }
       }
