@@ -1,7 +1,10 @@
 int points;
 Block[][] blocks;
+int[][] grid = new int[10][10];
 Piece joe;
 boolean plunge = false;
+boolean fullrow = false;
+int numofblocks;
 void draw(){
   joe.display();
   System.out.println(joe.wide + "," + joe.tall);
@@ -17,6 +20,17 @@ void draw(){
       }
     }
     joe = new Piece(1);
+    for (int i = 0; i < grid.length; i++) {
+      for (int j = 0; j < grid[0].length; j++) {
+        if (grid[i][j] == 1) {
+          numofblocks++;
+        }
+      }
+      if (numofblocks == 10) {
+        fullrow = true;
+      }
+    }
+    fullrow = false;
   }
 }
 void keyPressed(){
