@@ -4,6 +4,7 @@ Piece joe;
 int millis;
 boolean plunge = false;
 boolean complete = false;
+PImage design;
 void draw(){
   joe.display();
   if (joe.willfall()){
@@ -21,23 +22,30 @@ void draw(){
         display();
       }
     }
-
     joe = new Piece(1);
     for (int i = 0; i < blocks.length; i++) {
       complete = true;
       for (int j = 0; j < blocks[0].length; j++) {
         if (blocks[j][i] == null) {
           complete = false;
-          System.out.println(complete);
-        }
-        else {
-          System.out.println(complete + "wowzers " + i + ", " + j);
         }
       }
       if (complete) {
-        System.out.println("yay");
-        blocks[i] = blocks[i-1];
-        display();
+        System.out.println("yayyyyyyyyyyyyyyyyyyyyyy");
+        for (int k = i; k < blocks.length; k++) {
+          for (int j = 0; j < blocks[0].length; j++) {
+            if (blocks[j][k-1] != null) {
+              blocks[j][k] = new Block(j * 50, (k-1) * 50, design);
+              System.out.println("block");
+            }
+            else {
+              blocks[j][k] = null;
+              System.out.println("null");
+            }
+            background(255);
+            display();
+          }
+        }
       }
     }
   }
@@ -68,6 +76,7 @@ void setup(){
   joe.display();
   blocks = new Block[10][10];
   millis = 0;
+  design = loadImage("redcar.png");
 }
 void display(){
   for (int i = 0; i < blocks.length; i++){
