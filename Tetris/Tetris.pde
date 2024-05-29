@@ -3,10 +3,9 @@ Block[][] blocks;
 Piece joe;
 int millis;
 boolean plunge = false;
+boolean complete = false;
 void draw(){
   joe.display();
-  System.out.println(joe.wide + "," + joe.tall);
-  System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
   if (joe.willfall()){
     if (millis() > millis + 1000){
       joe.fall();
@@ -17,14 +16,30 @@ void draw(){
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = 0; j < joe.blocks[0].length; j++){
         if (joe.blocks[i][j] != null){
-          System.out.println(joe.topleft[1]);
-          blocks[joe.topleft[0] / 50 + i][joe.topleft[1] / 50 - j] = joe.blocks[i][j];
+          blocks[joe.topleft[0] / 50 + i][joe.topleft[1] / 50 + j] = joe.blocks[i][j];
         }
         display();
       }
     }
 
     joe = new Piece(1);
+    for (int i = 0; i < blocks.length; i++) {
+      complete = true;
+      for (int j = 0; j < blocks[0].length; j++) {
+        if (blocks[j][i] == null) {
+          complete = false;
+          System.out.println(complete);
+        }
+        else {
+          System.out.println(complete + "wowzers " + i + ", " + j);
+        }
+      }
+      if (complete) {
+        System.out.println("yay");
+        blocks[i] = blocks[i-1];
+        display();
+      }
+    }
   }
 }
 void keyPressed(){
@@ -53,7 +68,6 @@ void setup(){
   joe.display();
   blocks = new Block[10][10];
   millis = 0;
-  cool = false;
 }
 void display(){
   for (int i = 0; i < blocks.length; i++){
