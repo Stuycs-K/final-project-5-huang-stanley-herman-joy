@@ -4,6 +4,7 @@ public class Piece{
   int[] topleft;
   int wide, tall;
   int where;
+  ArrayList<Integer> bottom;
   public Piece(int num){
     topleft = new int[]{0, 0};
     blocks = new Block[3][3];
