@@ -53,7 +53,6 @@ void setup(){
   joe.display();
   blocks = new Block[10][10];
   millis = 0;
-  cool = false;
 }
 void display(){
   for (int i = 0; i < blocks.length; i++){
