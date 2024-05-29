@@ -8,31 +8,32 @@ public class Piece{
     topleft = new int[]{0, 0};
     blocks = new Block[3][3];
     if (num == 1){
-      blocks[0][0] = new Block(0, 0, design);
-      blocks[0][1] = new Block(0, 50, design);
-      blocks[0][2] = new Block(0, 100, design);
-      blocks[1][1] = new Block(50, 50, design);
+      blocks[0][0] = new Block(topleft[0], topleft[0], design);
+      blocks[0][1] = new Block(topleft[0], topleft[0] + 50, design);
+      blocks[0][2] = new Block(topleft[0], topleft[0] + 100, design);
+      blocks[1][1] = new Block(topleft[0] + 50, topleft[0] + 50, design);
       tall = 3;
       wide = 2;
     }
   }
 
-  boolean fall(){
+  void fall(){
     if (topleft[1] < 500 - (tall * 50)){
       for (int i = 0; i < blocks.length; i++){
         for (int j = 0; j < blocks[0].length; j++){
           if (blocks[i][j] != null){
             noStroke();
             square(blocks[i][j].getX(), blocks[i][j].getY(), 50);
-            blocks[i][j].setY(blocks[i][j].getY() + 1);
+            blocks[i][j].setY(blocks[i][j].getY() + 50);
           }
         }
       }
-      topleft[1] += 1;
+      topleft[1] += 50;
       display();
-      return true;
     }
-    return false;
+  }
+  boolean willfall(){
+    return topleft[1] < 500 - (tall * 50);
   }
   void rotate(){
     if (topleft[0] < 550 - blocks[0].length * 50 && topleft[1] < 500 - blocks.length * 50){

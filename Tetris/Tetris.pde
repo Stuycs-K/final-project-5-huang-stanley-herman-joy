@@ -1,12 +1,19 @@
 int points;
 Block[][] blocks;
 Piece joe;
+int millis;
 boolean plunge = false;
 void draw(){
   joe.display();
   System.out.println(joe.wide + "," + joe.tall);
   System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
-  if (!joe.fall()){
+  if (joe.willfall()){
+    if (millis() > millis + 1000){
+      joe.fall();
+      millis += 1000;
+    }
+  }
+  else{
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = 0; j < joe.blocks[0].length; j++){
         if (joe.blocks[i][j] != null){
@@ -16,6 +23,7 @@ void draw(){
         display();
       }
     }
+
     joe = new Piece(1);
   }
 }
@@ -42,9 +50,10 @@ void setup(){
   size(500, 500);
   background(255);
   joe = new Piece(1);
-  joe.fall();
   joe.display();
   blocks = new Block[10][10];
+  millis = 0;
+  cool = false;
 }
 void display(){
   for (int i = 0; i < blocks.length; i++){
