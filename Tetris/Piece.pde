@@ -3,6 +3,7 @@ public class Piece{
   PImage design = loadImage("redcar.png");
   int[] topleft;
   int wide, tall;
+  int where;
   public Piece(int num){
     topleft = new int[]{0, 0};
     blocks = new Block[3][3];
@@ -61,7 +62,7 @@ public class Piece{
         if (blocks[i][j] != null){
             noStroke();
             square(blocks[i][j].getX(), blocks[i][j].getY(), 50);
-            blocks[i][j].setY(450 - (j * 50));
+            blocks[i][j].setY(500 - ((tall - j + where) * 50));
           }
       }
     }
@@ -108,11 +109,22 @@ public class Piece{
      if (blocks[0].equals(new Block[blocks[0].length])){
        topleft[0] += 50;
      }
+     if (blocks[1].equals(new Block[blocks[0].length])){
+       topleft[0] += 50;
+     }
      for (int i = 0; i < blocks.length; i++){
        if (blocks[i][0] != null){
          return;
        }
      }
+     topleft[1] += 50;
+     where = 1;
+     for (int i = 0; i < blocks.length; i++){
+       if (blocks[i][1] != null){
+         return;
+       }
+     }
+     where = 2;
      topleft[1] += 50;
   }
 }
