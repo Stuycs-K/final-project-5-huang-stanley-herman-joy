@@ -41,10 +41,10 @@ public class Piece{
       wide = 2;
     }
     if (num == 5) {
-      blocks[0][0] = new Block(topleft[0], topleft[0], design);
-      blocks[0][1] = new Block(topleft[0], topleft[0] + 50, design);
-      blocks[0][2] = new Block(topleft[0], topleft[0] + 100, design);
-      blocks[0][3] = new Block(topleft[0], topleft[0] + 150, design);
+      blocks[1][0] = new Block(topleft[0], topleft[0], design);
+      blocks[1][1] = new Block(topleft[0], topleft[0] + 50, design);
+      blocks[1][2] = new Block(topleft[0], topleft[0] + 100, design);
+      blocks[1][3] = new Block(topleft[0], topleft[0] + 150, design);
       tall = 4;
       wide = 1;
     }
