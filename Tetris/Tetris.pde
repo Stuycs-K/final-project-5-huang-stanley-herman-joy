@@ -33,10 +33,10 @@ void draw(){
       }
       if (complete) {
         System.out.println("yayyyyyyyyyyyyyyyyyyyyyy");
-        for (int k = i; k < blocks.length; k++) {
+        for (int k = i; k > 0; k--) {
           for (int j = 0; j < blocks[0].length; j++) {
             if (blocks[j][k-1] != null) {
-              blocks[j][k] = new Block(j * 50, (k) * 50, design);
+              blocks[j][k] = new Block(j * 50, (k-1) * 50, design);
               System.out.println("block");
             }
             else {
