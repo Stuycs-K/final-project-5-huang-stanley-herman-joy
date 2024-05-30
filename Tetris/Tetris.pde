@@ -6,6 +6,7 @@ boolean plunge = false;
 boolean complete = false;
 PImage design;
 void draw(){
+  //blocks[i][j]: i is the column from left to right, j is the row, from top to bottom
   joe.display();
   if (joe.willfall()){
     if (millis() > millis + 1000){
@@ -35,7 +36,7 @@ void draw(){
         for (int k = i; k < blocks.length; k++) {
           for (int j = 0; j < blocks[0].length; j++) {
             if (blocks[j][k-1] != null) {
-              blocks[j][k] = new Block(j * 50, (k-1) * 50, design);
+              blocks[j][k] = new Block(j * 50, (k) * 50, design);
               System.out.println("block");
             }
             else {
