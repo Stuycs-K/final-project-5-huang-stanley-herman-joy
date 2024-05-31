@@ -6,7 +6,7 @@ public class Tetris{
   boolean complete = false;
   PImage design = loadImage("redcar.png");
   public Tetris(){
-    joe = new Piece(1);
+    joe = new Piece(randomPiece());
     joe.display();
     blocks = new Block[10][10];
     millis = 0;
@@ -31,7 +31,7 @@ public class Tetris{
         }
       }
       debugBlocks();
-      joe = new Piece(5);
+      joe = new Piece(randomPiece());
       for (int i = 0; i < blocks.length; i++) {
         complete = true;
         for (int j = 0; j < blocks[0].length; j++) {
@@ -82,6 +82,6 @@ public class Tetris{
     System.out.println();
   }
   int randomPiece(){
-    return 0;
+    return (int)(Math.random()*7)+1;
   }
 }
