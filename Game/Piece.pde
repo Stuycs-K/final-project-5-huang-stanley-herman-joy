@@ -53,6 +53,24 @@ public class Piece{
       tall = 4;
       wide = 1;
     }
+     if (num == 6) {
+      blocks = new Block[3][3];
+      blocks[0][0] = new Block(topleft[0] + 50, topleft[0], design);
+      blocks[0][1] = new Block(topleft[0] + 50, topleft[0] + 50, design);
+      blocks[1][1] = new Block(topleft[0] + 50, topleft[0] + 100, design);
+      blocks[1][2] = new Block(topleft[0] + 50, topleft[0] + 150, design);
+      tall = 2;
+      wide = 3;
+    }
+    if (num == 7) {
+      blocks = new Block[3][3];
+      blocks[0][1] = new Block(topleft[0] + 50, topleft[0], design);
+      blocks[0][2] = new Block(topleft[0] + 50, topleft[0] + 50, design);
+      blocks[1][0] = new Block(topleft[0] + 50, topleft[0] + 100, design);
+      blocks[1][1] = new Block(topleft[0] + 50, topleft[0] + 150, design);
+      tall = 2;
+      wide = 3;
+    }
     findtopleft();
   }
 

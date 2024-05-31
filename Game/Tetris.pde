@@ -85,10 +85,7 @@ public class Tetris{
     }
     System.out.println();
   }
-<<<<<<< HEAD
   int randomPiece(){
     return (int)(Math.random()*7)+1;
   }
-=======
->>>>>>> 8a5ec47e4068437f813aad1dcd91d10057471799
 }
