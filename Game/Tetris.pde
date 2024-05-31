@@ -15,7 +15,7 @@ public class Tetris{
     joe.display();
     //System.out.println(joe.wide + "," + joe.tall);
     //System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
-    if (joe.willfall()){
+    if (willfall()){
       if (millis() > millis + 1000){
         joe.fall();
         millis += 1000;
@@ -58,6 +58,9 @@ public class Tetris{
       }
     }
   }
+  boolean willfall(){
+    return joe.topleft[1] < 500 - (joe.tall * 50);
+  }
   void display(){
     for (int i = 0; i < blocks.length; i++){
       for (int j = 0; j < blocks[0].length; j++){
@@ -67,9 +70,7 @@ public class Tetris{
       }
     }
   }
-  boolean willfall(){
-    return topleft[1] < 500 - (tall * 50);
-  }
+
   void debugBlocks(){
     for (int i = 0; i < blocks.length; i++){
       for (int j = 0; j < blocks[0].length; j++){
