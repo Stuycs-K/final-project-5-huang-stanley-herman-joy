@@ -81,4 +81,7 @@ public class Tetris{
     }
     System.out.println();
   }
+  int randomPiece(){
+    return 0;
+  }
 }
