@@ -54,9 +54,6 @@ public class Piece{
       wide = 1;
     }
     findtopleft();
-    System.out.println(topleft[0] + "dfjakfjasl");
-        System.out.println(topleft[1] + "dfjakfjasl");
-
   }
 
   void fall(){
@@ -105,7 +102,7 @@ public class Piece{
         if (blocks[i][j] != null){
             noStroke();
             square(blocks[i][j].getX(), blocks[i][j].getY(), 50);
-            blocks[i][j].setY(500 - ((tall - j + wherex) * 50));
+            blocks[i][j].setY(500 - ((tall - j + wherey) * 50));
           }
       }
     }
@@ -162,16 +159,10 @@ public class Piece{
     boolean bob = true;
     for (int i = 0; i < blocks.length; i++){
       if (blocks[i][0] != null){
-        System.out.println("falsify");
         bob = false;
-        System.out.println(i);
-        System.out.println(Arrays.toString(blocks[0]));
-        System.out.println(Arrays.toString(blocks[1]));
-        System.out.println(Arrays.toString(blocks[2]));
         break;
       }
     }
-    System.out.println(bob);
     if (bob){
       topleft[1] += 50;
       wherey = 1;

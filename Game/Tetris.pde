@@ -24,18 +24,12 @@ public class Tetris{
       for (int i = 0; i < joe.blocks.length; i++){
         for (int j = 0; j < joe.blocks[0].length; j++){
           if (joe.blocks[i][j] != null){
-            System.out.println("new");
-            System.out.println(joe.topleft[0] / 50);
-            System.out.println(joe.wherex);
-            System.out.println(joe.wherey);
-            System.out.println(i);
-            System.out.println(joe.topleft[0] / 50 + i - joe.wherex);
-            blocks[joe.topleft[0] / 50 + i - joe.wherex][joe.topleft[1] / 50 - j - joe.wherey] = joe.blocks[i][j];
+            blocks[joe.topleft[0] / 50 + i - joe.wherex][joe.topleft[1] / 50 + j - joe.wherey] = joe.blocks[i][j];
           }
           display();
         }
       }
-  
+      debugBlocks();
       joe = new Piece(5);
     }
   }
@@ -47,5 +41,19 @@ public class Tetris{
         }
       }
     }
+  }
+  void debugBlocks(){
+    for (int i = 0; i < blocks.length; i++){
+      for (int j = 0; j < blocks[0].length; j++){
+        if (blocks[i][j] != null){
+          System.out.print("1");
+        }
+        else{
+          System.out.print("0");
+        }
+      }
+      System.out.println();
+    }
+    System.out.println();
   }
 }
