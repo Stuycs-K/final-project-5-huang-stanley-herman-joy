@@ -3,7 +3,8 @@ public class Tetris{
   Block[][] blocks;
   Piece joe;
   int millis;
-  boolean plunge = false;
+  boolean complete = false;
+  PImage design = loadImage("redcar.png");
   public Tetris(){
     joe = new Piece(1);
     joe.display();
@@ -31,6 +32,30 @@ public class Tetris{
       }
       debugBlocks();
       joe = new Piece(5);
+      for (int i = 0; i < blocks.length; i++) {
+        complete = true;
+        for (int j = 0; j < blocks[0].length; j++) {
+          if (blocks[j][i] == null) {
+            complete = false;
+          }
+        }
+        if (complete) {
+          for (int k = i; k > 0; k--) {
+            for (int j = 0; j < blocks[0].length; j++) {
+              if (blocks[j][k-1] != null) {
+                blocks[j][k] = new Block(j * 50, (k) * 50, design);
+                System.out.println("not null: " + j + ", " + k);
+              }
+              else {
+                blocks[j][k] = null;
+                System.out.println("is null: " + j + ", " + k);
+              }
+              background(255);
+              display();
+            }
+          }
+        }
+      }
     }
   }
   void display(){
