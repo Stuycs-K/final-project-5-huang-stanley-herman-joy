@@ -35,10 +35,12 @@ void draw(){
         for (int k = i; k > 0; k--) {
           for (int j = 0; j < blocks[0].length; j++) {
             if (blocks[j][k-1] != null) {
-              blocks[j][k] = new Block(j * 50, (k-1) * 50, design);
+              blocks[j][k] = new Block(j * 50, (k) * 50, design);
+              System.out.println("not null: " + j + ", " + k);
             }
             else {
               blocks[j][k] = null;
+              System.out.println("is null: " + j + ", " + k);
             }
             background(255);
             display();
@@ -47,7 +49,7 @@ void draw(){
       }
     }
 
-    joe = new Piece(1);
+    joe = new Piece(5);
   }
 }
 void keyPressed(){
@@ -72,7 +74,7 @@ void keyPressed(){
 void setup(){
   size(500, 500);
   background(255);
-  joe = new Piece(1);
+  joe = new Piece(5);
   joe.display();
   blocks = new Block[10][10];
   millis = 0;
