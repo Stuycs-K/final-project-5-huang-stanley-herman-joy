@@ -12,8 +12,8 @@ public class Tetris{
   }
   void run(){
     joe.display();
-    System.out.println(joe.wide + "," + joe.tall);
-    System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
+    //System.out.println(joe.wide + "," + joe.tall);
+    //System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
     if (joe.willfall()){
       if (millis() > millis + 1000){
         joe.fall();
@@ -24,8 +24,13 @@ public class Tetris{
       for (int i = 0; i < joe.blocks.length; i++){
         for (int j = 0; j < joe.blocks[0].length; j++){
           if (joe.blocks[i][j] != null){
-            System.out.println(joe.topleft[1]);
-            blocks[joe.topleft[0] / 50 + i][joe.topleft[1] / 50 - j] = joe.blocks[i][j];
+            System.out.println("new");
+            System.out.println(joe.topleft[0] / 50);
+            System.out.println(joe.wherex);
+            System.out.println(joe.wherey);
+            System.out.println(i);
+            System.out.println(joe.topleft[0] / 50 + i - joe.wherex);
+            blocks[joe.topleft[0] / 50 + i - joe.wherex][joe.topleft[1] / 50 - j - joe.wherey] = joe.blocks[i][j];
           }
           display();
         }
