@@ -71,9 +71,6 @@ public class Piece{
       display();
     }
   }
-  boolean willfall(){
-    return topleft[1] < 500 - (tall * 50);
-  }
   void rotate(){
     if (topleft[0] < 550 - blocks[0].length * 50 && topleft[1] < 500 - blocks.length * 50){
       Block[][] newblocks = new Block[blocks[0].length][blocks.length];

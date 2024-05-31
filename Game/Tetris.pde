@@ -67,6 +67,9 @@ public class Tetris{
       }
     }
   }
+  boolean willfall(){
+    return topleft[1] < 500 - (tall * 50);
+  }
   void debugBlocks(){
     for (int i = 0; i < blocks.length; i++){
       for (int j = 0; j < blocks[0].length; j++){
