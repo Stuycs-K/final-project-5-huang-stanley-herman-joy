@@ -16,9 +16,6 @@ public class Piece{
       tall = 3;
       wide = 2;
     }
-    if (num == 10) {
-      blocks[0][0] = new Block(topleft[0], topleft[0], design);
-    }
     if (num == 2) {
       blocks[0][0] = new Block(topleft[0], topleft[0], design);
       blocks[0][1] = new Block(topleft[0], topleft[0] + 50, design);
