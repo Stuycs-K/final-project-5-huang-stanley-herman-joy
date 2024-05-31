@@ -32,16 +32,13 @@ void draw(){
         }
       }
       if (complete) {
-        System.out.println("yayyyyyyyyyyyyyyyyyyyyyy");
         for (int k = i; k > 0; k--) {
           for (int j = 0; j < blocks[0].length; j++) {
             if (blocks[j][k-1] != null) {
               blocks[j][k] = new Block(j * 50, (k-1) * 50, design);
-              System.out.println("block");
             }
             else {
               blocks[j][k] = null;
-              System.out.println("null");
             }
             background(255);
             display();
@@ -50,7 +47,7 @@ void draw(){
       }
     }
 
-    joe = new Piece(5);
+    joe = new Piece(1);
   }
 }
 void keyPressed(){
