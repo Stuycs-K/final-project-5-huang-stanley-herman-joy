@@ -32,30 +32,7 @@ public class Tetris{
       }
       debugBlocks();
       joe = new Piece(randomPiece());
-      for (int i = 0; i < blocks.length; i++) {
-        complete = true;
-        for (int j = 0; j < blocks[0].length; j++) {
-          if (blocks[j][i] == null) {
-            complete = false;
-          }
-        }
-        if (complete) {
-          for (int k = i; k > 0; k--) {
-            for (int j = 0; j < blocks[0].length; j++) {
-              if (blocks[j][k-1] != null) {
-                blocks[j][k] = new Block(j * 50, (k) * 50, design);
-                System.out.println("not null: " + j + ", " + k);
-              }
-              else {
-                blocks[j][k] = null;
-                System.out.println("is null: " + j + ", " + k);
-              }
-              background(255);
-              display();
-            }
-          }
-        }
-      }
+      clearRow();
     }
   }
   boolean willfall(){
@@ -87,5 +64,31 @@ public class Tetris{
   }
   int randomPiece(){
     return (int)(Math.random()*7)+1;
+  }
+  void clearRow() {
+    for (int i = 0; i < blocks.length; i++) {
+      complete = true;
+      for (int j = 0; j < blocks[0].length; j++) {
+        if (blocks[j][i] == null) {
+          complete = false;
+        }
+      }
+      if (complete) {
+        for (int k = i; k > 0; k--) {
+          for (int j = 0; j < blocks[0].length; j++) {
+            if (blocks[j][k-1] != null) {
+              blocks[j][k] = new Block(j * 50, (k) * 50, design);
+              System.out.println("not null: " + j + ", " + k);
+            }
+            else {
+              blocks[j][k] = null;
+              System.out.println("is null: " + j + ", " + k);
+            }
+            background(255);
+            display();
+          }
+        }
+      }
+    }
   }
 }
