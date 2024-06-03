@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class Tetris{
   int points;
   Block[][] blocks;
@@ -38,12 +39,10 @@ public class Tetris{
   boolean willfall(){
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = joe.blocks[0].length - 1; j > -1; j--){
-        if (joe.blocks[j][i] != null){
-          if (joe.blocks[j][i].getY() / 50 == blocks.length - 1 || blocks[joe.blocks[j][i].getX() / 50][joe.blocks[j][i].getY() / 50 + 1] != null) {
+        if (joe.blocks[i][j] != null){
+          if (joe.blocks[i][j].getY() / 50 == blocks.length - 1 || blocks[joe.blocks[i][j].getX() / 50][joe.blocks[i][j].getY() / 50 + 1] != null) {
             return false;
           }
-          System.out.println(i + ", " + j + "i and j"); 
-          System.out.println(joe.blocks[j][i].getX() / 50 + ", " + (joe.blocks[j][i].getY() / 50 + 1)); 
           break;
         }
       }
