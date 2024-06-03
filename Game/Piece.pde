@@ -49,7 +49,7 @@ public class Piece{
       blocks[1][0] = new Block(topleft[0] + 35, topleft[0], design);
       blocks[1][1] = new Block(topleft[0] + 35, topleft[0] + 35, design);
       blocks[1][2] = new Block(topleft[0] + 35, topleft[0] + 70, design);
-      blocks[1][3] = new Block(topleft[0] + 35, topleft[0] + 135, design);
+      blocks[1][3] = new Block(topleft[0] + 35, topleft[0] + 105, design);
       tall = 4;
       wide = 1;
     }
