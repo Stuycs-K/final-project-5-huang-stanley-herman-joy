@@ -21,7 +21,7 @@ void keyPressed(){
     }
   }
   void setup(){
-    size(500, 500);
+    size(500, 1000);
     background(255);
     bob = new Tetris();
   }

@@ -6,10 +6,11 @@ public class Tetris{
   int millis;
   boolean complete = false;
   PImage design = loadImage("redcar.png");
+  int size = 35;
   public Tetris(){
     joe = new Piece(randomPiece());
     joe.display();
-    blocks = new Block[10][10];
+    blocks = new Block[10][20];
     millis = 0;
   }
   void run(){
@@ -26,7 +27,7 @@ public class Tetris{
       for (int i = 0; i < joe.blocks.length; i++){
         for (int j = 0; j < joe.blocks[0].length; j++){
           if (joe.blocks[i][j] != null){
-            blocks[joe.topleft[0] / 50 + i - joe.wherex][joe.topleft[1] / 50 + j - joe.wherey] = joe.blocks[i][j];
+            blocks[joe.topleft[0] / 35 + i - joe.wherex][joe.topleft[1] / 35 + j - joe.wherey] = joe.blocks[i][j];
           }
           display();
         }
@@ -39,7 +40,7 @@ public class Tetris{
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = joe.blocks[0].length - 1; j > -1; j--){
         if (joe.blocks[i][j] != null){
-          if (joe.blocks[i][j].getY() / 50 == blocks.length - 1 || blocks[joe.blocks[i][j].getX() / 50][joe.blocks[i][j].getY() / 50 + 1] != null) {
+          if (joe.blocks[i][j].getY() / 35 == blocks.length - 1 || blocks[joe.blocks[i][j].getX() / 35][joe.blocks[i][j].getY() / 35 + 1] != null) {
             return false;
           }
           break;
@@ -52,7 +53,7 @@ public class Tetris{
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = 0; j < joe.blocks[0].length; j++){
         if (joe.blocks[j][i] != null){
-          if (joe.blocks[j][i].getX() / 50 == 0 || blocks[joe.blocks[j][i].getX() / 50 - 1][joe.blocks[j][i].getY() / 50] != null) {
+          if (joe.blocks[j][i].getX() / 35 == 0 || blocks[joe.blocks[j][i].getX() / 35 - 1][joe.blocks[j][i].getY() / 35] != null) {
             return false;
           }
           break;
@@ -65,7 +66,7 @@ public class Tetris{
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = joe.blocks[0].length - 1; j > -1 ; j--){
         if (joe.blocks[j][i] != null){
-          if (joe.blocks[j][i].getX() / 50 == 9 || blocks[joe.blocks[j][i].getX() / 50 + 1][joe.blocks[j][i].getY() / 50] != null) {
+          if (joe.blocks[j][i].getX() / 35 == 9 || blocks[joe.blocks[j][i].getX() / 35 + 1][joe.blocks[j][i].getY() / 35] != null) {
             return false;
           }
           break;
@@ -110,7 +111,7 @@ public class Tetris{
     for (int i = 0; i < blocks.length; i++) {
       complete = true;
       for (int j = 0; j < blocks[0].length; j++) {
-        if (blocks[j][i] == null) {
+        if (blocks[i][j] == null) {
           complete = false;
         }
       }
@@ -118,7 +119,7 @@ public class Tetris{
         for (int k = i; k > 0; k--) {
           for (int j = 0; j < blocks[0].length; j++) {
             if (blocks[j][k-1] != null) {
-              blocks[j][k] = new Block(j * 50, (k) * 50, design);
+              blocks[j][k] = new Block(j * 35, (k) * 35, design);
               System.out.println("not null: " + j + ", " + k);
             }
             else {

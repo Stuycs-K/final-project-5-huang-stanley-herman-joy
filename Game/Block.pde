@@ -1,5 +1,5 @@
 public class Block{
-  final static int size = 50;
+  final static int size = 35;
   PImage design;
   int xcor;
   int ycor;
@@ -7,7 +7,7 @@ public class Block{
     xcor = x;
     ycor = y;
     design = image;
-    design.resize(50, 50);
+    design.resize(size, size);
   }
   public int getX(){
     return xcor;
