@@ -16,7 +16,7 @@ void keyPressed(){
       bob.joe.display();
     }
     if (key == 's') {
-      bob.joe.plunge();
+      bob.plunge();
       bob.joe.display();
     }
   }

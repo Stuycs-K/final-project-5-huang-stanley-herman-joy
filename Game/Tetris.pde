@@ -31,7 +31,6 @@ public class Tetris{
           display();
         }
       }
-      debugBlocks();
       joe = new Piece(randomPiece());
       clearRow();
     }
@@ -74,6 +73,11 @@ public class Tetris{
       }
     }
     return true;
+  }
+  void plunge(){
+    while (willfall()){
+      joe.fall();
+    }
   }
   void display(){
     for (int i = 0; i < blocks.length; i++){
