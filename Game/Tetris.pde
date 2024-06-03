@@ -36,6 +36,15 @@ public class Tetris{
     }
   }
   boolean willfall(){
+    for (int i = 0; i < joe.blocks.length; i++) {
+      for (int j= 0; j < joe.blocks[0].length; j++) {
+        if (joe.blocks[i][j] != null) {
+          if (blocks[joe.topleft[0] / 50][joe.topleft[1] / 50 + 1] != null) {
+            return false;
+          }
+        }
+      }
+    }
     return joe.topleft[1] < 500 - (joe.tall * 50);
   }
   void display(){
