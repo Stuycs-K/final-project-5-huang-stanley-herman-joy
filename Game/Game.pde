@@ -3,11 +3,11 @@ void draw(){
   bob.run();
 }
 void keyPressed(){
-    if (key == 'a') {
+    if (key == 'a' && bob.canleft()) {
       bob.joe.moveleft();
       bob.joe.display();
     }
-    if (key == 'd') {
+    if (key == 'd' && bob.canright()) {
       bob.joe.moveright();
       bob.joe.display();
     }

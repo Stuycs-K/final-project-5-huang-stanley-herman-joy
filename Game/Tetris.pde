@@ -49,6 +49,32 @@ public class Tetris{
     }
     return true;
   }
+  boolean canleft(){
+    for (int i = 0; i < joe.blocks.length; i++){
+      for (int j = 0; j < joe.blocks[0].length; j++){
+        if (joe.blocks[j][i] != null){
+          if (joe.blocks[j][i].getX() / 50 == 0 || blocks[joe.blocks[j][i].getX() / 50 - 1][joe.blocks[j][i].getY() / 50] != null) {
+            return false;
+          }
+          break;
+        }
+      }
+    }
+    return true;
+  }
+  boolean canright(){
+    for (int i = 0; i < joe.blocks.length; i++){
+      for (int j = joe.blocks[0].length - 1; j > -1 ; j--){
+        if (joe.blocks[j][i] != null){
+          if (joe.blocks[j][i].getX() / 50 == 9 || blocks[joe.blocks[j][i].getX() / 50 + 1][joe.blocks[j][i].getY() / 50] != null) {
+            return false;
+          }
+          break;
+        }
+      }
+    }
+    return true;
+  }
   void display(){
     for (int i = 0; i < blocks.length; i++){
       for (int j = 0; j < blocks[0].length; j++){
