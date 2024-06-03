@@ -53,21 +53,21 @@ public class Piece{
       tall = 4;
       wide = 1;
     }
-     if (num == 6) {
-      blocks = new Block[3][3];
-      blocks[0][0] = new Block(topleft[0], topleft[0], design);
-      blocks[1][0] = new Block(topleft[0] + 50, topleft[0], design);
-      blocks[1][1] = new Block(topleft[0] + 50, topleft[0] + 50, design);
-      blocks[2][1] = new Block(topleft[0] + 100, topleft[0] + 50, design);
+    if (num == 6) {
+      blocks = new Block[2][3];
+      blocks[0][0] = new Block(topleft[0] + 50, topleft[0], design);
+      blocks[0][1] = new Block(topleft[0] + 50, topleft[0] + 50, design);
+      blocks[1][1] = new Block(topleft[0] + 50, topleft[0] + 100, design);
+      blocks[1][2] = new Block(topleft[0] + 50, topleft[0] + 150, design);
       tall = 2;
       wide = 3;
     }
     if (num == 7) {
-      blocks = new Block[3][3];
-      blocks[1][0] = new Block(topleft[0] + 50, topleft[0], design);
-      blocks[2][0] = new Block(topleft[0] + 100, topleft[0], design);
-      blocks[0][1] = new Block(topleft[0], topleft[0] + 50, design);
-      blocks[1][1] = new Block(topleft[0] + 50, topleft[0] + 50, design);
+      blocks = new Block[2][3];
+      blocks[0][1] = new Block(topleft[0] + 50, topleft[0], design);
+      blocks[0][2] = new Block(topleft[0] + 50, topleft[0] + 50, design);
+      blocks[1][0] = new Block(topleft[0] + 50, topleft[0] + 100, design);
+      blocks[1][1] = new Block(topleft[0] + 50, topleft[0] + 150, design);
       tall = 2;
       wide = 3;
     }
@@ -88,7 +88,10 @@ public class Piece{
       topleft[1] += 50;
       display();
     }
-  }  
+  }
+  boolean willfall(){
+    return topleft[1] < 500 - (tall * 50);
+  }
   void rotate(){
     if (topleft[0] < 550 - blocks[0].length * 50 && topleft[1] < 500 - blocks.length * 50){
       Block[][] newblocks = new Block[blocks[0].length][blocks.length];
