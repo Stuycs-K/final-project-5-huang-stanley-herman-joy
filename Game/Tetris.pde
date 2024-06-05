@@ -4,9 +4,10 @@ public class Tetris{
   Block[][] blocks;
   Piece joe;
   int millis;
-  boolean complete = false;
   PImage design = loadImage("redcar.png");
   int size = 35;
+  int[] rate = new int[]{48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
+  int rowscleared = 100;
   public Tetris(){
     joe = new Piece(randomPiece());
     joe.display();
@@ -18,9 +19,9 @@ public class Tetris{
     //System.out.println(joe.wide + "," + joe.tall);
     //System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
     if (willfall()){
-      if (millis() > millis + 1000){
+      if (millis() > millis + rate[Math.min(rowscleared / 10, 29)] * 1000 / 60){
         joe.fall();
-        millis += 1000;
+        millis += rate[Math.min(rowscleared / 10, 29)] * 1000 / 60;
         debugBlocks();
       }
     }
@@ -122,13 +123,14 @@ public class Tetris{
   }
   void clearRow() {
     for (int i = 0; i < blocks[0].length; i++) {
-      complete = true;
+      boolean complete = true;
       for (int j = 0; j < blocks.length; j++) {
         if (blocks[j][i] == null) {
           complete = false;
         }
       }
       if (complete) {
+        rowscleared++;
         for (int k = i; k > 0; k--) {
           for (int j = 0; j < blocks.length; j++) {
             if (blocks[j][k-1] != null) {
