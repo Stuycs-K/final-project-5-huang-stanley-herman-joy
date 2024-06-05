@@ -21,6 +21,7 @@ public class Tetris{
       if (millis() > millis + 1000){
         joe.fall();
         millis += 1000;
+        debugBlocks();
       }
     }
     else{
@@ -80,6 +81,18 @@ public class Tetris{
       joe.fall();
     }
   }
+  boolean canrotate(){
+    int x = (joe.topleft[0] / size) - joe.wherex;
+    int y = (joe.topleft[1] / size) - joe.wherey;
+    for (int i = 0; i < joe.blocks[0].length; i++){
+      for (int j = 0; j < joe.blocks.length; j++){
+        if (j + x < 0 || joe.blocks.length - 1 - i + y > 20 || blocks[j + x][joe.blocks.length - 1 - i + y] != null){
+          return false;
+        }
+      }
+    }
+    return true;
+  }
   void display(){
     for (int i = 0; i < blocks.length; i++){
       for (int j = 0; j < blocks[0].length; j++){
@@ -108,16 +121,16 @@ public class Tetris{
     return (int)(Math.random() * 7)+1;
   }
   void clearRow() {
-    for (int i = 0; i < blocks.length; i++) {
+    for (int i = 0; i < blocks[0].length; i++) {
       complete = true;
-      for (int j = 0; j < blocks[0].length; j++) {
-        if (blocks[i][j] == null) {
+      for (int j = 0; j < blocks.length; j++) {
+        if (blocks[j][i] == null) {
           complete = false;
         }
       }
       if (complete) {
         for (int k = i; k > 0; k--) {
-          for (int j = 0; j < blocks[0].length; j++) {
+          for (int j = 0; j < blocks.length; j++) {
             if (blocks[j][k-1] != null) {
               blocks[j][k] = new Block(j * size, (k) * size, design);
               System.out.println("not null: " + j + ", " + k);
