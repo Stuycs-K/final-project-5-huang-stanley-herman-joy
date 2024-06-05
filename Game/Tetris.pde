@@ -27,7 +27,7 @@ public class Tetris{
       for (int i = 0; i < joe.blocks.length; i++){
         for (int j = 0; j < joe.blocks[0].length; j++){
           if (joe.blocks[i][j] != null){
-            blocks[joe.topleft[0] / 35 + i - joe.wherex][joe.topleft[1] / 35 + j - joe.wherey] = joe.blocks[i][j];
+            blocks[joe.topleft[0] / size + i - joe.wherex][joe.topleft[1] / size + j - joe.wherey] = joe.blocks[i][j];
           }
           display();
         }
@@ -40,7 +40,7 @@ public class Tetris{
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = joe.blocks[0].length - 1; j > -1; j--){
         if (joe.blocks[i][j] != null){
-          if (joe.blocks[i][j].getY() / 35 == blocks.length - 1 || blocks[joe.blocks[i][j].getX() / 35][joe.blocks[i][j].getY() / 35 + 1] != null) {
+          if (joe.blocks[i][j].getY() / size == blocks[0].length - 1 || blocks[joe.blocks[i][j].getX() / size][joe.blocks[i][j].getY() / size + 1] != null) {
             return false;
           }
           break;
@@ -53,7 +53,7 @@ public class Tetris{
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = 0; j < joe.blocks[0].length; j++){
         if (joe.blocks[j][i] != null){
-          if (joe.blocks[j][i].getX() / 35 == 0 || blocks[joe.blocks[j][i].getX() / 35 - 1][joe.blocks[j][i].getY() / 35] != null) {
+          if (joe.blocks[j][i].getX() / size == 0 || blocks[joe.blocks[j][i].getX() / size - 1][joe.blocks[j][i].getY() / size] != null) {
             return false;
           }
           break;
@@ -66,7 +66,7 @@ public class Tetris{
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = joe.blocks[0].length - 1; j > -1 ; j--){
         if (joe.blocks[j][i] != null){
-          if (joe.blocks[j][i].getX() / 35 == 9 || blocks[joe.blocks[j][i].getX() / 35 + 1][joe.blocks[j][i].getY() / 35] != null) {
+          if (joe.blocks[j][i].getX() / size == 9 || blocks[joe.blocks[j][i].getX() / size + 1][joe.blocks[j][i].getY() / size] != null) {
             return false;
           }
           break;
@@ -105,7 +105,7 @@ public class Tetris{
     System.out.println();
   }
   int randomPiece(){
-    return (int)(Math.random()*7)+1;
+    return (int)(Math.random() * 7)+1;
   }
   void clearRow() {
     for (int i = 0; i < blocks.length; i++) {
@@ -119,7 +119,7 @@ public class Tetris{
         for (int k = i; k > 0; k--) {
           for (int j = 0; j < blocks[0].length; j++) {
             if (blocks[j][k-1] != null) {
-              blocks[j][k] = new Block(j * 35, (k) * 35, design);
+              blocks[j][k] = new Block(j * size, (k) * size, design);
               System.out.println("not null: " + j + ", " + k);
             }
             else {
