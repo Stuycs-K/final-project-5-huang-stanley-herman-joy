@@ -91,9 +91,9 @@ public class Piece{
     }
   }  
   void rotate(){
-    System.out.println("first: " + (topleft[0] - 11 + blocks[0].length));
-    System.out.println("second: " + (topleft[1] - 20 + blocks.length));
     if (topleft[0] / size < 11 - blocks[0].length && topleft[1] / size < 20 - blocks.length){
+      topleft[0] -= wherex * size;
+      topleft[1] -= wherey * size;
       Block[][] newblocks = new Block[blocks[0].length][blocks.length];
       for (int i = 0; i < newblocks.length; i++){
         for (int j = 0; j < newblocks[0].length; j++){
