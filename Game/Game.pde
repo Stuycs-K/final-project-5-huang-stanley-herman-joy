@@ -19,6 +19,11 @@ void keyPressed(){
       bob.plunge();
       bob.joe.display();
     }
+    if (key == ENTER) {
+      background(255);
+      bob = new Tetris();
+      bob.display();
+    }
   }
   void setup(){
     size(350, 700);
