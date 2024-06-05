@@ -5,69 +5,72 @@ public class Piece{
   int[] topleft;
   int wide, tall;
   int wherex, wherey;
+  int size = 35;
+  int gameWidth = 10;
+  int gameHeight = 40;
   ArrayList<Integer> bottom;
   public Piece(int num){
     topleft = new int[]{0, 0};
     if (num == 1){
       blocks = new Block[3][3];
       blocks[0][0] = new Block(topleft[0], topleft[0], design);
-      blocks[0][1] = new Block(topleft[0], topleft[0] + 35, design);
-      blocks[0][2] = new Block(topleft[0], topleft[0] + 70, design);
-      blocks[1][1] = new Block(topleft[0] + 35, topleft[0] + 35, design);
+      blocks[0][1] = new Block(topleft[0], topleft[0] + size, design);
+      blocks[0][2] = new Block(topleft[0], topleft[0] + (2 * size), design);
+      blocks[1][1] = new Block(topleft[0] + size, topleft[0] + size, design);
       tall = 3;
       wide = 2;
     }
     if (num == 2) {
       blocks = new Block[3][3];
       blocks[0][0] = new Block(topleft[0], topleft[0], design);
-      blocks[0][1] = new Block(topleft[0], topleft[0] + 35, design);
-      blocks[0][2] = new Block(topleft[0], topleft[0] + 70, design);
-      blocks[1][2] = new Block(topleft[0] + 35, topleft[0] + 70, design);
+      blocks[0][1] = new Block(topleft[0], topleft[0] + size, design);
+      blocks[0][2] = new Block(topleft[0], topleft[0] + (2*size), design);
+      blocks[1][2] = new Block(topleft[0] + 35, topleft[0] + size, design);
       tall = 3;
       wide = 2;
     }
     if (num == 3) {
       blocks = new Block[3][3];
       blocks[0][0] = new Block(topleft[0], topleft[0], design);
-      blocks[0][1] = new Block(topleft[0], topleft[0] + 35, design);
-      blocks[0][2] = new Block(topleft[0], topleft[0] + 70, design);
-      blocks[1][0] = new Block(topleft[0] + 35, topleft[0], design);
+      blocks[0][1] = new Block(topleft[0], topleft[0] + size, design);
+      blocks[0][2] = new Block(topleft[0], topleft[0] + (2*size), design);
+      blocks[1][0] = new Block(topleft[0] + size, topleft[0], design);
       tall = 3;
       wide = 2;  
     }
     if (num == 4) {
       blocks = new Block[2][2];
       blocks[0][0] = new Block(topleft[0], topleft[0], design);
-      blocks[0][1] = new Block(topleft[0], topleft[0] + 35, design);
-      blocks[1][0] = new Block(topleft[0] + 35, topleft[0], design);
-      blocks[1][1] = new Block(topleft[0] + 35, topleft[0] + 35, design);
+      blocks[0][1] = new Block(topleft[0], topleft[0] + size, design);
+      blocks[1][0] = new Block(topleft[0] + size, topleft[0], design);
+      blocks[1][1] = new Block(topleft[0] + size, topleft[0] + size, design);
       tall = 2;
       wide = 2;
     }
     if (num == 5) {
       blocks = new Block[4][4];
-      blocks[1][0] = new Block(topleft[0] + 35, topleft[0], design);
-      blocks[1][1] = new Block(topleft[0] + 35, topleft[0] + 35, design);
-      blocks[1][2] = new Block(topleft[0] + 35, topleft[0] + 70, design);
-      blocks[1][3] = new Block(topleft[0] + 35, topleft[0] + 105, design);
+      blocks[1][0] = new Block(topleft[0] + size, topleft[0], design);
+      blocks[1][1] = new Block(topleft[0] + size, topleft[0] + size, design);
+      blocks[1][2] = new Block(topleft[0] + size, topleft[0] + (2*size), design);
+      blocks[1][3] = new Block(topleft[0] + size, topleft[0] + (3*size), design);
       tall = 4;
       wide = 1;
     }
      if (num == 6) {
       blocks = new Block[3][3];
       blocks[0][0] = new Block(topleft[0], topleft[0], design);
-      blocks[1][0] = new Block(topleft[0] + 35, topleft[0], design);
-      blocks[1][1] = new Block(topleft[0] + 35, topleft[0] + 35, design);
-      blocks[2][1] = new Block(topleft[0] + 70, topleft[0] + 35, design);
+      blocks[1][0] = new Block(topleft[0] + size, topleft[0], design);
+      blocks[1][1] = new Block(topleft[0] + size, topleft[0] + size, design);
+      blocks[2][1] = new Block(topleft[0] + (2*size), topleft[0] + size, design);
       tall = 2;
       wide = 3;
     }
     if (num == 7) {
       blocks = new Block[3][3];
-      blocks[1][0] = new Block(topleft[0] + 35, topleft[0], design);
-      blocks[2][0] = new Block(topleft[0] + 70, topleft[0], design);
-      blocks[0][1] = new Block(topleft[0], topleft[0] + 35, design);
-      blocks[1][1] = new Block(topleft[0] + 35, topleft[0] + 35, design);
+      blocks[1][0] = new Block(topleft[0] + size, topleft[0], design);
+      blocks[2][0] = new Block(topleft[0] + (2*size), topleft[0], design);
+      blocks[0][1] = new Block(topleft[0], topleft[0] + size, design);
+      blocks[1][1] = new Block(topleft[0] + size, topleft[0] + size, design);
       tall = 2;
       wide = 3;
     }
@@ -75,30 +78,30 @@ public class Piece{
   }
 
   void fall(){
-    if (topleft[1] < 350 - (tall * 35)){
+    if (topleft[1] < (size*40) - (tall * size)){
       for (int i = 0; i < blocks.length; i++){
         for (int j = 0; j < blocks[0].length; j++){
           if (blocks[i][j] != null){
             noStroke();
-            square(blocks[i][j].getX(), blocks[i][j].getY(), 35);
-            blocks[i][j].setY(blocks[i][j].getY() + 35);
+            square(blocks[i][j].getX(), blocks[i][j].getY(), size);
+            blocks[i][j].setY(blocks[i][j].getY() + size);
           }
         }
       }
-      topleft[1] += 35;
+      topleft[1] += size;
       display();
     }
   }  
   void rotate(){
-    if (topleft[0] < 385 - blocks[0].length * 35 && topleft[1] < 350 - blocks.length * 35){
+    if (topleft[0] < (size*21) - blocks[0].length * size && topleft[1] < (size*10) - blocks.length * size){
       Block[][] newblocks = new Block[blocks[0].length][blocks.length];
       for (int i = 0; i < newblocks.length; i++){
         for (int j = 0; j < newblocks[0].length; j++){
           if (blocks[j][blocks.length - 1 - i] != null){
             noStroke();
-            square(blocks[j][blocks.length - 1 - i].getX(), blocks[j][blocks.length - 1 - i].getY(), 35);
-            blocks[j][blocks.length - 1 - i].setX(topleft[0] + i * 35);
-            blocks[j][blocks.length - 1 - i].setY(topleft[1] + j * 35);
+            square(blocks[j][blocks.length - 1 - i].getX(), blocks[j][blocks.length - 1 - i].getY(), size);
+            blocks[j][blocks.length - 1 - i].setX(topleft[0] + i * size);
+            blocks[j][blocks.length - 1 - i].setY(topleft[1] + j * size);
             newblocks[i][j] = blocks[j][blocks.length - 1 - i];
           }
         }
@@ -117,26 +120,26 @@ public class Piece{
         for (int j = 0; j < blocks[0].length; j++){
           if (blocks[i][j] != null){
             noStroke();
-            square(blocks[i][j].getX(), blocks[i][j].getY(), 35);
-            blocks[i][j].setX(blocks[i][j].getX() - 35);
+            square(blocks[i][j].getX(), blocks[i][j].getY(), size);
+            blocks[i][j].setX(blocks[i][j].getX() - size);
           }
         }
       }
-      topleft[0] -= 35;
+      topleft[0] -= size;
     }
   }
   void moveright(){
-    if (topleft[0] != 350 - (wide * 35)){
+    if (topleft[0] != (size*20) - (wide * size)){
       for (int i = 0; i < blocks.length; i++){
         for (int j = 0; j < blocks[0].length; j++){
           if (blocks[i][j] != null){
             noStroke();
-            square(blocks[i][j].getX(), blocks[i][j].getY(), 35);
-            blocks[i][j].setX(blocks[i][j].getX() + 35);
+            square(blocks[i][j].getX(), blocks[i][j].getY(), size);
+            blocks[i][j].setX(blocks[i][j].getX() + size);
           }
         }
       }
-      topleft[0] += 35;
+      topleft[0] += size;
     }
   }
   void display(){
@@ -152,11 +155,11 @@ public class Piece{
     wherex = 0;
     wherey = 0;
     if (Arrays.equals(blocks[0], new Block[blocks[0].length])){
-      topleft[0] += 35;
+      topleft[0] += size;
       wherex = 1;
     }
     if (Arrays.equals(blocks[1], new Block[blocks[1].length])){
-      topleft[0] += 35;
+      topleft[0] += size;
       wherex = 2;
     }
     boolean bob = true;
@@ -167,7 +170,7 @@ public class Piece{
       }
     }
     if (bob){
-      topleft[1] += 35;
+      topleft[1] += size;
       wherey = 1;
       for (int i = 0; i < blocks.length; i++){
         if (blocks[i][1] != null){
@@ -177,7 +180,7 @@ public class Piece{
       }
       if (bob){
         wherey = 2;
-        topleft[1] += 35;
+        topleft[1] += size;
       }
     }
   }
