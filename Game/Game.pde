@@ -11,7 +11,7 @@ void keyPressed(){
       bob.joe.moveright();
       bob.joe.display();
     }
-    if (key == 'r'){
+    if (key == 'r' && bob.canrotate()){
       bob.joe.rotate();
       bob.joe.display();
     }
@@ -21,7 +21,7 @@ void keyPressed(){
     }
   }
   void setup(){
-    size(500, 1000);
+    size(350, 700);
     background(255);
     bob = new Tetris();
   }

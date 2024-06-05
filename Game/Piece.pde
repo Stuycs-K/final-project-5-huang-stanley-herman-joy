@@ -15,7 +15,7 @@ public class Piece{
       blocks = new Block[3][3];
       blocks[0][0] = new Block(topleft[0], topleft[0], design);
       blocks[0][1] = new Block(topleft[0], topleft[0] + size, design);
-      blocks[0][2] = new Block(topleft[0], topleft[0] + (2 * size), design);
+      blocks[0][2] = new Block(topleft[0], topleft[0] + 2 * size, design);
       blocks[1][1] = new Block(topleft[0] + size, topleft[0] + size, design);
       tall = 3;
       wide = 2;
@@ -24,8 +24,8 @@ public class Piece{
       blocks = new Block[3][3];
       blocks[0][0] = new Block(topleft[0], topleft[0], design);
       blocks[0][1] = new Block(topleft[0], topleft[0] + size, design);
-      blocks[0][2] = new Block(topleft[0], topleft[0] + (2*size), design);
-      blocks[1][2] = new Block(topleft[0] + 35, topleft[0] + size, design);
+      blocks[0][2] = new Block(topleft[0], topleft[0] + 2 * size, design);
+      blocks[1][2] = new Block(topleft[0] + size, topleft[0] + 2 * size, design);
       tall = 3;
       wide = 2;
     }
@@ -33,7 +33,7 @@ public class Piece{
       blocks = new Block[3][3];
       blocks[0][0] = new Block(topleft[0], topleft[0], design);
       blocks[0][1] = new Block(topleft[0], topleft[0] + size, design);
-      blocks[0][2] = new Block(topleft[0], topleft[0] + (2*size), design);
+      blocks[0][2] = new Block(topleft[0], topleft[0] + 2 * size, design);
       blocks[1][0] = new Block(topleft[0] + size, topleft[0], design);
       tall = 3;
       wide = 2;  
@@ -51,8 +51,8 @@ public class Piece{
       blocks = new Block[4][4];
       blocks[1][0] = new Block(topleft[0] + size, topleft[0], design);
       blocks[1][1] = new Block(topleft[0] + size, topleft[0] + size, design);
-      blocks[1][2] = new Block(topleft[0] + size, topleft[0] + (2*size), design);
-      blocks[1][3] = new Block(topleft[0] + size, topleft[0] + (3*size), design);
+      blocks[1][2] = new Block(topleft[0] + size, topleft[0] + 2 * size, design);
+      blocks[1][3] = new Block(topleft[0] + size, topleft[0] + 105, design);
       tall = 4;
       wide = 1;
     }
@@ -61,14 +61,14 @@ public class Piece{
       blocks[0][0] = new Block(topleft[0], topleft[0], design);
       blocks[1][0] = new Block(topleft[0] + size, topleft[0], design);
       blocks[1][1] = new Block(topleft[0] + size, topleft[0] + size, design);
-      blocks[2][1] = new Block(topleft[0] + (2*size), topleft[0] + size, design);
+      blocks[2][1] = new Block(topleft[0] + 2 * size, topleft[0] + size, design);
       tall = 2;
       wide = 3;
     }
     if (num == 7) {
       blocks = new Block[3][3];
       blocks[1][0] = new Block(topleft[0] + size, topleft[0], design);
-      blocks[2][0] = new Block(topleft[0] + (2*size), topleft[0], design);
+      blocks[2][0] = new Block(topleft[0] + 2 * size, topleft[0], design);
       blocks[0][1] = new Block(topleft[0], topleft[0] + size, design);
       blocks[1][1] = new Block(topleft[0] + size, topleft[0] + size, design);
       tall = 2;
@@ -78,7 +78,7 @@ public class Piece{
   }
 
   void fall(){
-    if (topleft[1] < (size*40) - (tall * size)){
+    if (topleft[1] < height - (tall * size)){
       for (int i = 0; i < blocks.length; i++){
         for (int j = 0; j < blocks[0].length; j++){
           if (blocks[i][j] != null){
@@ -93,7 +93,9 @@ public class Piece{
     }
   }  
   void rotate(){
-    if (topleft[0] < (size*21) - blocks[0].length * size && topleft[1] < (size*10) - blocks.length * size){
+    if (topleft[0] / size < (blocks.length + 1) - blocks[0].length && topleft[1] / size <  - blocks.length){
+      topleft[0] -= wherex * size;
+      topleft[1] -= wherey * size;
       Block[][] newblocks = new Block[blocks[0].length][blocks.length];
       for (int i = 0; i < newblocks.length; i++){
         for (int j = 0; j < newblocks[0].length; j++){
@@ -129,7 +131,7 @@ public class Piece{
     }
   }
   void moveright(){
-    if (topleft[0] != (size*20) - (wide * size)){
+    if (topleft[0] != (10 * size) - (wide * size)){
       for (int i = 0; i < blocks.length; i++){
         for (int j = 0; j < blocks[0].length; j++){
           if (blocks[i][j] != null){

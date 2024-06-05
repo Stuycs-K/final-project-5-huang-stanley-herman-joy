@@ -4,9 +4,10 @@ public class Tetris{
   Block[][] blocks;
   Piece joe;
   int millis;
-  boolean complete = false;
   PImage design = loadImage("redcar.png");
   int size = 35;
+  int[] rate = new int[]{48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
+  int rowscleared = 0;
   public Tetris(){
     joe = new Piece(randomPiece());
     joe.display();
@@ -18,9 +19,10 @@ public class Tetris{
     //System.out.println(joe.wide + "," + joe.tall);
     //System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
     if (willfall()){
-      if (millis() > millis + 1000){
+      if (millis() > millis + rate[Math.min(rowscleared / 10, 29)] * 1000 / 60){
         joe.fall();
-        millis += 1000;
+        millis += rate[Math.min(rowscleared / 10, 29)] * 1000 / 60;
+        debugBlocks();
       }
     }
     else{
@@ -80,6 +82,18 @@ public class Tetris{
       joe.fall();
     }
   }
+  boolean canrotate(){
+    int x = (joe.topleft[0] / size) - joe.wherex;
+    int y = (joe.topleft[1] / size) - joe.wherey;
+    for (int i = 0; i < joe.blocks[0].length; i++){
+      for (int j = 0; j < joe.blocks.length; j++){
+        if (j + x < 0 || joe.blocks.length - 1 - i + y > 20 || blocks[j + x][joe.blocks.length - 1 - i + y] != null){
+          return false;
+        }
+      }
+    }
+    return true;
+  }
   void display(){
     for (int i = 0; i < blocks.length; i++){
       for (int j = 0; j < blocks[0].length; j++){
@@ -105,19 +119,20 @@ public class Tetris{
     System.out.println();
   }
   int randomPiece(){
-    return (int)(Math.random()*7)+1;
+    return (int)(Math.random() * 7)+1;
   }
   void clearRow() {
-    for (int i = 0; i < blocks.length; i++) {
-      complete = true;
-      for (int j = 0; j < blocks[0].length; j++) {
-        if (blocks[i][j] == null) {
+    for (int i = 0; i < blocks[0].length; i++) {
+      boolean complete = true;
+      for (int j = 0; j < blocks.length; j++) {
+        if (blocks[j][i] == null) {
           complete = false;
         }
       }
       if (complete) {
+        rowscleared++;
         for (int k = i; k > 0; k--) {
-          for (int j = 0; j < blocks[0].length; j++) {
+          for (int j = 0; j < blocks.length; j++) {
             if (blocks[j][k-1] != null) {
               blocks[j][k] = new Block(j * size, (k) * size, design);
               System.out.println("not null: " + j + ", " + k);
