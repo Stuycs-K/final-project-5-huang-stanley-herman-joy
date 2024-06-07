@@ -7,7 +7,7 @@ public class Tetris{
   PImage design = loadImage("redcar.png");
   int size = 35;
   int[] rate = new int[]{48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
-  int rowscleared = 100;
+  int rowscleared = 10;
   public Tetris(){
     joe = new Piece(randomPiece());
     joe.display();
@@ -87,7 +87,7 @@ public class Tetris{
     int y = (joe.topleft[1] / size) - joe.wherey;
     for (int i = 0; i < joe.blocks[0].length; i++){
       for (int j = 0; j < joe.blocks.length; j++){
-        if (j + x < 0 || joe.blocks.length - 1 - i + y > 20 || blocks[j + x][joe.blocks.length - 1 - i + y] != null){
+        if (j + x < 0 || j + x > 9 || joe.blocks.length - 1 - i + y < 0 || joe.blocks.length - 1 - i + y > 20 || blocks[j + x][joe.blocks.length - 1 - i + y] != null){
           return false;
         }
       }
