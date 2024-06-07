@@ -7,12 +7,11 @@ void draw(){
     }
   }
   else{
-    background(255);
-    fill(0);
+    background(0);
+    fill(255);
     textSize(10);
     text("GAME OVER", bob.blocks.length * bob.size / 2, bob.blocks[0].length * bob.size /2);
     text("press enter to play again", bob.blocks.length * bob.size / 2, bob.blocks[0].length * bob.size /2 + 10);
-    fill(255);
   }
 }
 void keyPressed(){
@@ -34,11 +33,12 @@ void keyPressed(){
       bob.plunge();
       bob.joe.display();
     }
-    if (key == ENTER) {
+  }
+  if (key == ENTER) {
       background(255);
       bob = new Tetris();
       bob.display();
-    }
+      done = false;
   }
 }
   void setup(){

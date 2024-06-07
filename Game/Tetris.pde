@@ -40,7 +40,7 @@ public class Tetris{
             display();
           }
         }
-        joe = new Piece(6);
+        joe = new Piece(randomPiece());
         if (!canspawn()){
           return true;
         }
