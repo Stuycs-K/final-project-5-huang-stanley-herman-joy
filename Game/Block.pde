@@ -7,7 +7,7 @@ public class Block{
     xcor = x;
     ycor = y;
     design = image;
-    design.resize(size - 1, size - 1);
+    design.resize(size - 2, size - 2);
   }
   public int getX(){
     return xcor;
