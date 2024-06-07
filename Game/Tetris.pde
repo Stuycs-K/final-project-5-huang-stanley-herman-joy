@@ -88,12 +88,6 @@ public class Tetris{
   boolean canrotate(){
     int x = (joe.topleft[0] / size) - joe.wherex;
     int y = (joe.topleft[1] / size) - joe.wherey;
-    System.out.println("x: " + x);
-    System.out.println("y: " + y);
-    System.out.println("joe.topleft[0] / size : " + joe.topleft[0]/size);
-    System.out.println("joe.topleft[1] / size : " + joe.topleft[1]/size);
-    System.out.println("joe.wherex: " + joe.wherex);
-    System.out.println("joe.wherey: " + joe.wherey);
     for (int i = 0; i < joe.blocks[0].length; i++){
       for (int j = 0; j < joe.blocks.length; j++){
         if (j + x < 0 || joe.blocks.length - 1 - i + y > 20 || blocks[j + x][joe.blocks.length - 1 - i + y] != null){
