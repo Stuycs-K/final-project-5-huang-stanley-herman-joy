@@ -10,6 +10,38 @@ wrote the left and right methods and made sure they didn't go out of the screen
 
 wrote a buggy plunge
 
+### 5/28
+
+tried to fix plunge after both of us made changes, started working on clearing a row
+
+### 5/29
+
+added pieces we forgot about and tried clearing a row with a different method
+
+### 5/30
+
+debug the clearRow and found out the way we first implemented the array was backwards
+
+### 5/31
+
+randomized the pieces and fixed the pieces I added on 5/29
+
+### 6/2
+
+organized the code so it's easier for us to see
+
+### 6/3
+
+tried changing the size of the board and was fixing the problems that came up because of that
+
+### 6/5
+
+continued what we did on 6/3 - made numbers into variables to use in all the code
+
+### 6/6
+
+made it so we can reset the game and made a lose screen
+
 
 ## Stanley Huang
 
