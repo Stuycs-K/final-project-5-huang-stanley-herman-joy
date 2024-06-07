@@ -86,3 +86,5 @@ plunge(), moveleft(), and moveright() cannot go through blocks
 Everything works for the new board size, rotate now doesn't move the piece sideways, added different speeds based on rows cleared
 
 ### 6/6
+
+Changed background to black, pieces spawn horizontally oriented, added sprites for blocks, included unable to spawn piece as a loss condition, if you lose nothing can be interacted with
