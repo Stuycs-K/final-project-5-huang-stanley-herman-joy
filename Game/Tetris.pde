@@ -16,7 +16,7 @@ public class Tetris{
     rowscleared = 0;
     points = 0;
   }
-  void run(){
+  boolean run(){
     joe.display();
     //System.out.println(joe.wide + "," + joe.tall);
     //System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
@@ -39,6 +39,7 @@ public class Tetris{
       joe = new Piece(randomPiece());
       clearRow();
     }
+    return lose();
   }
   boolean willfall(){
     for (int i = 0; i < joe.blocks.length; i++){
@@ -149,5 +150,13 @@ public class Tetris{
         }
       }
     }
+  }
+  boolean lose() {
+    for (int i = 0; i < blocks.length; i++) {
+      if (blocks[i][0] != null) {
+        return true;
+      }
+    }
+    return false;
   }
 }
