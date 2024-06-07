@@ -16,7 +16,7 @@ void draw(){
   }
 }
 void keyPressed(){
-  if (!bob.lose()){
+  if (!done){
     System.out.println(bob.canrotate());
     if (key == 'a' && bob.canleft()) {
       bob.joe.moveleft();

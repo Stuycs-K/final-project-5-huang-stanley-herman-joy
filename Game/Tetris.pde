@@ -25,7 +25,6 @@ public class Tetris{
       if (millis() > millis + rate){
         joe.fall();
         millis += rate;
-        debugBlocks();
       }
     }
     else{
@@ -40,10 +39,11 @@ public class Tetris{
           display();
         }
       }
-      joe = new Piece(randomPiece());
+      joe = new Piece(6);
       clearRow();
     }
-    return lose();
+    debugBlocks();
+    return lose() || !canspawn();
   }
   boolean willfall(){
     for (int i = 0; i < joe.blocks.length; i++){
@@ -95,6 +95,16 @@ public class Tetris{
     for (int i = 0; i < joe.blocks[0].length; i++){
       for (int j = 0; j < joe.blocks.length; j++){
         if (j + x < 0 || j + x > 9 || joe.blocks.length - 1 - i + y < 0 || joe.blocks.length - 1 - i + y > 20 || blocks[j + x][joe.blocks.length - 1 - i + y] != null){
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  boolean canspawn(){
+    for (int i = 1; i < joe.blocks.length; i++){
+      for (int j = 0; j < joe.blocks[0].length; j++){
+        if (blocks[joe.topleft[0] / 35 + j][joe.topleft[1] / 35 + i] != null){
           return false;
         }
       }
