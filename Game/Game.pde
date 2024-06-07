@@ -10,6 +10,7 @@ void draw(){
   }
 }
 void keyPressed(){
+  System.out.println(bob.canrotate());
     if (key == 'a' && bob.canleft()) {
       bob.joe.moveleft();
       bob.joe.display();
