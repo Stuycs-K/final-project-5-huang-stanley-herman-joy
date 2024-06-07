@@ -1,7 +1,8 @@
 import java.util.Arrays;
 public class Piece{
   Block[][] blocks;
-  PImage design = loadImage("redcar.png");
+  PImage design = loadImage("best.png");
+  PImage design1 = loadImage("best1.png");
   int[] topleft;
   int wide, tall;
   int wherex, wherey;
@@ -10,7 +11,7 @@ public class Piece{
   int gameHeight = 40;
   ArrayList<Integer> bottom;
   public Piece(int num){
-    topleft = new int[]{0, 0};
+    topleft = new int[]{140, -35};
     if (num == 1){
       blocks = new Block[3][3];
       blocks[0][0] = new Block(topleft[0], topleft[1], design);
@@ -22,19 +23,19 @@ public class Piece{
     }
     if (num == 2) {
       blocks = new Block[3][3];
-      blocks[0][0] = new Block(topleft[0], topleft[1], design);
-      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design);
-      blocks[0][2] = new Block(topleft[0], topleft[1] + 2 * size, design);
-      blocks[1][2] = new Block(topleft[0] + size, topleft[1] + 2 * size, design);
+      blocks[0][0] = new Block(topleft[0], topleft[1], design1);
+      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design1);
+      blocks[0][2] = new Block(topleft[0], topleft[1] + 2 * size, design1);
+      blocks[1][2] = new Block(topleft[0] + size, topleft[1] + 2 * size, design1);
       tall = 3;
       wide = 2;
     }
     if (num == 3) {
       blocks = new Block[3][3];
-      blocks[0][0] = new Block(topleft[0], topleft[1], design);
-      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design);
-      blocks[0][2] = new Block(topleft[0], topleft[1] + 2 * size, design);
-      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design);
+      blocks[0][0] = new Block(topleft[0], topleft[1], design1);
+      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design1);
+      blocks[0][2] = new Block(topleft[0], topleft[1] + 2 * size, design1);
+      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1);
       tall = 3;
       wide = 2;  
     }
@@ -58,19 +59,19 @@ public class Piece{
     }
      if (num == 6) {
       blocks = new Block[3][3];
-      blocks[0][0] = new Block(topleft[0], topleft[1], design);
-      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design);
-      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design);
-      blocks[2][1] = new Block(topleft[0] + 2 * size, topleft[1] + size, design);
+      blocks[0][0] = new Block(topleft[0], topleft[1], design1);
+      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1);
+      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design1);
+      blocks[2][1] = new Block(topleft[0] + 2 * size, topleft[1] + size, design1);
       tall = 2;
       wide = 3;
     }
     if (num == 7) {
       blocks = new Block[3][3];
-      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design);
-      blocks[2][0] = new Block(topleft[0] + 2 * size, topleft[1], design);
-      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design);
-      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design);
+      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1);
+      blocks[2][0] = new Block(topleft[0] + 2 * size, topleft[1], design1);
+      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design1);
+      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design1);
       tall = 2;
       wide = 3;
     }
@@ -83,6 +84,7 @@ public class Piece{
         for (int j = 0; j < blocks[0].length; j++){
           if (blocks[i][j] != null){
             noStroke();
+            fill(0);
             square(blocks[i][j].getX(), blocks[i][j].getY(), size);
             blocks[i][j].setY(blocks[i][j].getY() + size);
           }
