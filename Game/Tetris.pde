@@ -12,7 +12,9 @@ public class Tetris{
     joe = new Piece(randomPiece());
     joe.display();
     blocks = new Block[10][20];
-    millis = 0;
+    millis = millis();
+    rowscleared = 0;
+    points = 0;
   }
   void run(){
     joe.display();
