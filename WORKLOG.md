@@ -56,3 +56,33 @@ Wrote additional Block methods and started to write fall()
 ### 5/26
 
 Wrote rotate(), fall() and moveleft()/moveright() works for bigger Pieces, Pieces that reach the bottom stay on screen
+
+### 5/28
+
+Wrote working rotate() and plunge(), Pieces fall like they are in a grid
+
+### 5/29
+
+Fixed minor issue with plunge()
+
+### 5/30
+
+Made a new Game file
+
+### 5/31
+
+Fixed error where blocks are shifted to the right, wrote debugBlocks(), moved willfall() to Tetris
+
+### 6/2
+
+Blocks now stack after they stop falling
+
+### 6/3
+
+plunge(), moveleft(), and moveright() cannot go through blocks
+
+### 6/4
+
+Everything works for the new board size, rotate now doesn't move the piece sideways, added different speeds based on rows cleared
+
+### 6/6
