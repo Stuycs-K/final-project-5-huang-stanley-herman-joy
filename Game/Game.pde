@@ -4,7 +4,7 @@ void draw(){
     background(255);
     fill(0);
     textSize(10);
-    text("YOU LOSE", bob.blocks.length * bob.size / 2, bob.blocks[0].length * bob.size /2);
+    text("GAME OVER", bob.blocks.length * bob.size / 2, bob.blocks[0].length * bob.size /2);
     text("press enter to play again", bob.blocks.length * bob.size / 2, bob.blocks[0].length * bob.size /2 + 10);
     fill(255);
   }
