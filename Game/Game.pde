@@ -1,6 +1,12 @@
 Tetris bob;
+boolean done = false;
 void draw(){
-  if (bob.run()) {
+  if (!done){
+    if (bob.run()){
+      done = true;
+    }
+  }
+  else{
     background(255);
     fill(0);
     textSize(10);
@@ -37,6 +43,6 @@ void keyPressed(){
 }
   void setup(){
     size(350, 700);
-    background(255);
+    background(0);
     bob = new Tetris();
   }
