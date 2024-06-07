@@ -6,8 +6,9 @@ public class Tetris{
   int millis;
   PImage design = loadImage("redcar.png");
   int size = 35;
-  int[] rate = new int[]{48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
   int rowscleared = 0;
+  int[] rates = new int[]{48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
+  int rate = rates[Math.min(rowscleared / 10, 29)] * 1000 / 60;
   public Tetris(){
     joe = new Piece(randomPiece());
     joe.display();
@@ -21,15 +22,18 @@ public class Tetris{
     //System.out.println(joe.wide + "," + joe.tall);
     //System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
     if (willfall()){
-      if (millis() > millis + rate[Math.min(rowscleared / 10, 29)] * 1000 / 60){
+      if (millis() > millis + rate){
         joe.fall();
-        millis += rate[Math.min(rowscleared / 10, 29)] * 1000 / 60;
+        millis += rate;
         debugBlocks();
       }
     }
     else{
       for (int i = 0; i < joe.blocks.length; i++){
         for (int j = 0; j < joe.blocks[0].length; j++){
+          if (joe.topleft[1] / size + j - joe.wherey < 0){
+            return false;
+          }
           if (joe.blocks[i][j] != null){
             blocks[joe.topleft[0] / size + i - joe.wherex][joe.topleft[1] / size + j - joe.wherey] = joe.blocks[i][j];
           }
@@ -144,7 +148,7 @@ public class Tetris{
               blocks[j][k] = null;
               System.out.println("is null: " + j + ", " + k);
             }
-            background(255);
+            background(0);
             display();
           }
         }
