@@ -10,7 +10,8 @@ void draw(){
   }
 }
 void keyPressed(){
-  System.out.println(bob.canrotate());
+  if (!bob.lose()){
+    System.out.println(bob.canrotate());
     if (key == 'a' && bob.canleft()) {
       bob.joe.moveleft();
       bob.joe.display();
@@ -33,6 +34,7 @@ void keyPressed(){
       bob.display();
     }
   }
+}
   void setup(){
     size(350, 700);
     background(255);
