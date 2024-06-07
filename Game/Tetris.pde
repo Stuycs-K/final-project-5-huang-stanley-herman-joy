@@ -90,7 +90,7 @@ public class Tetris{
     int y = (joe.topleft[1] / size) - joe.wherey;
     for (int i = 0; i < joe.blocks[0].length; i++){
       for (int j = 0; j < joe.blocks.length; j++){
-        if (j + x < 0 || joe.blocks.length - 1 - i + y > 20 || blocks[j + x][joe.blocks.length - 1 - i + y] != null){
+        if (j + x < 0 || j + x > 9 || joe.blocks.length - 1 - i + y < 0 || joe.blocks.length - 1 - i + y > 20 || blocks[j + x][joe.blocks.length - 1 - i + y] != null){
           return false;
         }
       }
