@@ -44,6 +44,7 @@ public class Tetris{
           }
         }
         joe = new Piece(randomPiece());
+        joe2 = new Piece(joe.num);
         if (!canspawn()){
           return true;
         }
@@ -63,8 +64,6 @@ public class Tetris{
     for (int i = 0; i < cool.blocks.length; i++){
       for (int j = cool.blocks[0].length - 1; j > -1; j--){
         if (cool.blocks[i][j] != null){
-          System.out.println(cool.blocks[i][j].getY());
-          System.out.println(cool.blocks[i][j].getX());
           if (cool.blocks[i][j].getY() / size == blocks[0].length - 1 || blocks[cool.blocks[i][j].getX() / size][cool.blocks[i][j].getY() / size + 1] != null) {
             return false;
           }

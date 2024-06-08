@@ -24,14 +24,17 @@ void draw(){
 }
 void keyPressed(){
   if (!done){
-    System.out.println(bob.canrotate());
     if (key == 'a' && bob.canleft()) {
       bob.joe.moveleft();
+      bob.joe2.moveleft();
       bob.joe.display();
+      bob.joe2.display();
     }
     if (key == 'd' && bob.canright()) {
       bob.joe.moveright();
+      bob.joe2.moveright();
       bob.joe.display();
+      bob.joe2.display();
     }
     if (key == 'r' && bob.canrotate()){
       bob.joe.rotate();
