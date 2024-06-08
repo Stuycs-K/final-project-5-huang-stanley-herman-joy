@@ -26,13 +26,15 @@ void keyPressed(){
   if (!done){
     if (key == 'a' && bob.canleft()) {
       bob.joe.moveleft();
-      bob.joe2.moveleft();
+      bob.movejoe2();
+      bob.plunge(bob.joe2);
       bob.joe.display();
       bob.joe2.display();
     }
     if (key == 'd' && bob.canright()) {
       bob.joe.moveright();
-      bob.joe2.moveright();
+      bob.movejoe2();
+      bob.plunge(bob.joe2);
       bob.joe.display();
       bob.joe2.display();
     }
@@ -41,7 +43,7 @@ void keyPressed(){
       bob.joe.display();
     }
     if (key == 's') {
-      bob.plunge();
+      bob.plunge(bob.joe);
       bob.joe.display();
     }
   }

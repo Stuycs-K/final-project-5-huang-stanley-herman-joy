@@ -14,7 +14,7 @@ public class Tetris{
     blocks = new Block[10][20];
     joe = new Piece(randomPiece());
     joe2 = new Piece(joe.num);
-    movejoe2();
+    plunge(joe2);
     joe.display();
     joe2.display();
     millis = millis();
@@ -45,6 +45,7 @@ public class Tetris{
         }
         joe = new Piece(randomPiece());
         joe2 = new Piece(joe.num);
+        plunge(joe2);
         if (!canspawn()){
           return true;
         }
@@ -53,12 +54,6 @@ public class Tetris{
     }
     debugBlocks();
     return lose();
-  }
-  void movejoe2(){
-    while (willfall(joe2)){
-      joe2.fall();
-    }
-    joe2.display();
   }
   boolean willfall(Piece cool){
     for (int i = 0; i < cool.blocks.length; i++){
@@ -99,9 +94,22 @@ public class Tetris{
     }
     return true;
   }
-  void plunge(){
-    while (willfall(joe)){
-      joe.fall();
+  void movejoe2(){
+    bob.joe2.topleft = new int[]{bob.joe.topleft[0], bob.joe.topleft[1]};
+    for (int i = 0; i < joe2.blocks.length; i++){
+      for (int j = 0; j < joe2.blocks[0].length; j++){
+        if (joe2.blocks[i][j] != null){
+          noStroke();
+          square(joe2.blocks[i][j].getX(), joe2.blocks[i][j].getY(), size);
+          joe2.blocks[i][j].setX(joe.blocks[i][j].getX());
+          joe2.blocks[i][j].setY(joe.blocks[i][j].getY());
+        }
+      }
+    }
+  }
+  void plunge(Piece cool){
+    while (willfall(cool)){
+      cool.fall();
     }
   }
   boolean canrotate(){
@@ -135,7 +143,6 @@ public class Tetris{
       }
     }
   }
-
   void debugBlocks(){
     for (int i = 0; i < blocks.length; i++){
       for (int j = 0; j < blocks[0].length; j++){
