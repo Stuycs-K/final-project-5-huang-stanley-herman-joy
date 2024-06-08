@@ -35,7 +35,7 @@ void keyPressed(){
     }
   }
   if (key == ENTER) {
-      background(255);
+      background(0);
       bob = new Tetris();
       bob.display();
       done = false;
