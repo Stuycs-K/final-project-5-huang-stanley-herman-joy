@@ -39,8 +39,12 @@ void keyPressed(){
       bob.joe2.display();
     }
     if (key == 'r' && bob.canrotate()){
+      bob.movejoe2();
       bob.joe.rotate();
+      bob.joe2.rotate();
+      bob.plunge(bob.joe2);
       bob.joe.display();
+      bob.joe2.display();
     }
     if (key == 's') {
       bob.plunge(bob.joe);

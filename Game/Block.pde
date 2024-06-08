@@ -22,6 +22,6 @@ public class Block{
     this.ycor = newY;
   }
   void display(){
-    image(design, xcor, ycor);
+    image(design, xcor + 1, ycor + 1);
   }
 }
