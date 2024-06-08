@@ -2,6 +2,7 @@ Tetris bob;
 boolean done = false;
 void draw(){
   if (!done){
+    /*
     stroke(255);
     for (int i = 0; i < 350; i+=35) {
       line(i-1, -1, i-1, 699);
@@ -10,7 +11,8 @@ void draw(){
       line(0, i-1, 350, i-1);
     }
     line(350, 0, 350, 700);
-    if (bob.run()){
+    */
+    if (bob.run()){ //<>//
       done = true;
     }
   }

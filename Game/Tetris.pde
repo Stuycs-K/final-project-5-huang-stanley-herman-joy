@@ -24,6 +24,7 @@ public class Tetris{
   boolean run(){
     //System.out.println(joe.wide + "," + joe.tall);
     //System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
+    joe.display();
     if (willfall(joe)){
       if (millis() > millis + rate){
         joe.fall();
@@ -43,8 +44,9 @@ public class Tetris{
             display();
           }
         }
-        joe = new Piece(randomPiece());
+        joe = new Piece(randomPiece()); //<>//
         joe2 = new Piece(joe.num);
+        joe.display();
         plunge(joe2);
         if (!canspawn()){
           return true;
