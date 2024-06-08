@@ -3,6 +3,7 @@ public class Tetris{
   int points;
   Block[][] blocks;
   Piece joe;
+  Piece joe2;
   int millis;
   PImage design = loadImage("redcar.png");
   int size = 35;
@@ -10,18 +11,20 @@ public class Tetris{
   int[] rates = new int[]{48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
   int rate = rates[Math.min(rowscleared / 10, 29)] * 1000 / 60;
   public Tetris(){
-    joe = new Piece(randomPiece());
-    joe.display();
     blocks = new Block[10][20];
+    joe = new Piece(randomPiece());
+    joe2 = new Piece(joe.num);
+    movejoe2();
+    joe.display();
+    joe2.display();
     millis = millis();
     rowscleared = 0;
     points = 0;
   }
   boolean run(){
-    joe.display();
     //System.out.println(joe.wide + "," + joe.tall);
     //System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
-    if (willfall()){
+    if (willfall(joe)){
       if (millis() > millis + rate){
         joe.fall();
         millis += rate;
@@ -50,11 +53,19 @@ public class Tetris{
     debugBlocks();
     return lose();
   }
-  boolean willfall(){
-    for (int i = 0; i < joe.blocks.length; i++){
-      for (int j = joe.blocks[0].length - 1; j > -1; j--){
-        if (joe.blocks[i][j] != null){
-          if (joe.blocks[i][j].getY() / size == blocks[0].length - 1 || blocks[joe.blocks[i][j].getX() / size][joe.blocks[i][j].getY() / size + 1] != null) {
+  void movejoe2(){
+    while (willfall(joe2)){
+      joe2.fall();
+    }
+    joe2.display();
+  }
+  boolean willfall(Piece cool){
+    for (int i = 0; i < cool.blocks.length; i++){
+      for (int j = cool.blocks[0].length - 1; j > -1; j--){
+        if (cool.blocks[i][j] != null){
+          System.out.println(cool.blocks[i][j].getY());
+          System.out.println(cool.blocks[i][j].getX());
+          if (cool.blocks[i][j].getY() / size == blocks[0].length - 1 || blocks[cool.blocks[i][j].getX() / size][cool.blocks[i][j].getY() / size + 1] != null) {
             return false;
           }
           break;
@@ -90,7 +101,7 @@ public class Tetris{
     return true;
   }
   void plunge(){
-    while (willfall()){
+    while (willfall(joe)){
       joe.fall();
     }
   }

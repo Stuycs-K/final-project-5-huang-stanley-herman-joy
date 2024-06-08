@@ -9,9 +9,11 @@ public class Piece{
   int size = 35;
   int gameWidth = 10;
   int gameHeight = 40;
+  int num;
   ArrayList<Integer> bottom;
   public Piece(int num){
     topleft = new int[]{140, 0};
+    this.num = num;
     if (num == 1){
       blocks = new Block[3][3];
       blocks[0][0] = new Block(topleft[0], topleft[1], design);
