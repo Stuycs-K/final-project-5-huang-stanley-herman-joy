@@ -2,6 +2,14 @@ Tetris bob;
 boolean done = false;
 void draw(){
   if (!done){
+    stroke(255);
+    for (int i = 0; i < 350; i+=35) {
+      line(i-1, -1, i-1, 699);
+    }
+    for (int i = 0; i < 700; i+=35) {
+      line(0, i-1, 350, i-1);
+    }
+    line(350, 0, 350, 700);
     if (bob.run()){
       done = true;
     }
@@ -9,9 +17,9 @@ void draw(){
   else{
     background(0);
     fill(255);
-    textSize(10);
-    text("GAME OVER", bob.blocks.length * bob.size / 2, bob.blocks[0].length * bob.size /2);
-    text("press enter to play again", bob.blocks.length * bob.size / 2, bob.blocks[0].length * bob.size /2 + 10);
+    textSize(15);
+    text("GAME OVER", bob.blocks.length * bob.size / 2 - 30, bob.blocks[0].length * bob.size /2);
+    text("press enter to play again", bob.blocks.length * bob.size / 2 - 60, bob.blocks[0].length * bob.size /2 + 15);
   }
 }
 void keyPressed(){
@@ -42,7 +50,7 @@ void keyPressed(){
   }
 }
   void setup(){
-    size(350, 700);
+    size(500, 700);
     background(0);
     bob = new Tetris();
   }

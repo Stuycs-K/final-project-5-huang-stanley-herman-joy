@@ -156,7 +156,7 @@ public class Tetris{
         for (int k = i; k > 0; k--) {
           for (int j = 0; j < blocks.length; j++) {
             if (blocks[j][k-1] != null) {
-              blocks[j][k] = new Block(j * size, (k) * size, design);
+              blocks[j][k] = new Block(j * size, (k) * size, blocks[j][k-1].design);
               System.out.println("not null: " + j + ", " + k);
             }
             else {
