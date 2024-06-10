@@ -198,10 +198,10 @@ public class Tetris{
         }
       }
       if (i == 2){
-        john = john.get(0, 0, 40, 0);
+        john = john.get(0, 0, 37, 35);
       }
       if (sam[i] == '0'){
-        image(john, x + i * 40 + 3, y);
+        image(john, x + i * 40 + 2, y);
       }
       else{
         image(john, x + i * 40, y);
@@ -249,6 +249,7 @@ public class Tetris{
         }
       }
     }
+    displayNumbers("" + rowscleared, 588, 24);
   }
   boolean lose() {
     for (int i = 0; i < blocks.length; i++) {
