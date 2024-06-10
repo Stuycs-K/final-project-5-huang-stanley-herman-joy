@@ -13,7 +13,9 @@ public class Tetris{
   int level = 3;
   int[] rates = new int[]{48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
   int rate = rates[Math.min(rowscleared / 10, 29)] * 1000 / 60;
+  PImage numbers = loadImage("numbers.png");
   public Tetris(){
+    numbers.resize(400, 28);
     blocks = new Block[10][20];
     joe = new Piece(randomPiece(), level, new int[]{490, 105});
     joe2 = new Piece(joe.num, level, new int[]{490, 105});
@@ -22,7 +24,7 @@ public class Tetris{
     joe.display();
     joe2.display();
     millis = millis();
-    rowscleared = 0;
+    rowscleared = 500;
     points = 0;
     PImage playfield = loadImage("play.png");
     playfield.resize(410, 755);
@@ -35,6 +37,11 @@ public class Tetris{
     image(nextpiece, 730, 370);
     rect(765, 450, 150, 155);
     nextPiece.display();
+    PImage lines = loadImage("lines.png");
+    lines.resize(410, 73);
+    image(lines, 320, 0);
+    rect(593, 17, 110, 40);
+    displayNumbers("" + rowscleared, 588, 24);
   }
   void findNextPiece(){
     rect(765, 450, 150, 155);
@@ -181,6 +188,26 @@ public class Tetris{
       }
     }
   }
+  void displayNumbers(String bob, int x, int y){
+    char[] sam = bob.toCharArray(); //<>//
+    for (int i = 0; i < sam.length; i++){
+      PImage john = numbers.get((sam[i] - '0') * 40, 0, 40, 35);
+      for (int j = 0; j < john.pixels.length; j++){
+        if (red(john.pixels[j]) > 100){
+          john.pixels[j] = color(230, 230, 230);
+        }
+      }
+      if (i == 2){
+        john = john.get(0, 0, 40, 0);
+      }
+      if (sam[i] == '0'){
+        image(john, x + i * 40 + 3, y);
+      }
+      else{
+        image(john, x + i * 40, y);
+      }
+    }
+  }
   void debugBlocks(){
     for (int i = 0; i < blocks.length; i++){
       for (int j = 0; j < blocks[0].length; j++){
@@ -189,7 +216,7 @@ public class Tetris{
         }
         else{
           System.out.print("0");
-        } //<>//
+        }
       }
       System.out.println();
     }
