@@ -119,19 +119,19 @@ public class Block{
     }
     if (num % 3 == 1){
       for (int i = 0; i < design.pixels.length; i++){
-        if (green(design1.pixels[i]) < 200 || blue(design1.pixels[i]) < 200 || red(design1.pixels[i]) < 200){
-          design1.pixels[i] = newColor;
+        if (green(design.pixels[i]) < 200 || blue(design.pixels[i]) < 200 || red(design.pixels[i]) < 200){
+          design.pixels[i] = newColor;
         }
       }
-      design1.updatePixels();
+      design.updatePixels();
     }
     if (num % 3 == 2){
       for (int i = 0; i < design.pixels.length; i++){
-        if (green(design1.pixels[i]) < 200 || blue(design1.pixels[i]) < 200 || red(design1.pixels[i]) < 200){
-          design1.pixels[i] = newColor;
+        if (green(design.pixels[i]) < 200 || blue(design.pixels[i]) < 200 || red(design.pixels[i]) < 200){
+          design.pixels[i] = newColor;
         }
       }
-      design1.updatePixels();
+      design.updatePixels();
     }
   }
 }
