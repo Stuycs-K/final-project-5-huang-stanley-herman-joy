@@ -6,9 +6,13 @@ public class Piece{
   int[] topleft;
   int wide, tall;
   int wherex, wherey;
+<<<<<<< HEAD
   int size;
   int gameWidth = 10;
   int gameHeight = 40;
+=======
+  int size = 35;
+>>>>>>> 585b06fa96d7a77b3a0b4fb876b66867ef1481fc
   int num;
   int tint;
   boolean up;

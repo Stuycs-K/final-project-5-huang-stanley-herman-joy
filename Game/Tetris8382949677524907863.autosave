@@ -11,13 +11,8 @@ public class Tetris{
   PImage design1 = loadImage("best1.png");
   int size = 35;
   int rowscleared = 0;
-<<<<<<< HEAD
   int level = 0;
   int[] rates = new int[]{48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
-=======
-  int level = 3;
-  int[] rates = new int[]{48, 43, 38, 33, 28, 24, 20, 16, 12, 9, 9, 9, 6, 6, 6, 6, 5, 5, 5, 5, 4, 4, 4, 4, 4, 3, 3, 3, 2, 1};
->>>>>>> 585b06fa96d7a77b3a0b4fb876b66867ef1481fc
   int rate = rates[Math.min(rowscleared / 10, 29)] * 1000 / 60;
   PImage linenumbers = loadImage("numbers.png");
   PImage scorenumbers = loadImage("numbers.png");
@@ -112,7 +107,7 @@ public class Tetris{
         joe = new Piece(nextPiece.num, level, new int[]{490, 105}, size);
         joe2 = new Piece(joe.num, level, new int[]{490, 105}, size);
         stats[joe.num]++;
-        displayStats("" + stats[joe.num] % 100, 157, 319 + joe.num * 65);
+        displayStats("" + stats[joe.num] % 1000, 157, 319 + joe.num * 65);
         findNextPiece(randomPiece());
         joe.display();
         plunge(joe2);
@@ -137,7 +132,7 @@ public class Tetris{
     joe = new Piece(nextPiece.num, level, new int[]{490, 105}, size);
     joe2 = new Piece(joe.num, level, new int[]{490, 105}, size);
     stats[joe.num]++;
-    displayStats("" + stats[joe.num], 157, 319 + joe.num * 65);
+    displayStats("" + stats[joe.num] % 1000, 157, 319 + joe.num * 65);
     findNextPiece(randomPiece());
     joe.display();
     plunge(joe2);
@@ -194,7 +189,7 @@ public class Tetris{
       }
     }
   }
-  void plunge(Piece cool){ //<>//
+  void plunge(Piece cool){
     while (willfall(cool)){
       cool.fall();
     }
@@ -263,7 +258,7 @@ public class Tetris{
       }
       Piece joestat = new Piece(i, level, new int[]{x, y + i * 67}, 25);
       joestat.display();
-      displayStats("" + stats[i], 157, 319 + i * 65);
+      displayStats("" + stats[i] % 1000, 157, 319 + i * 65);
     }
   }
   void displayStats(String bob, int x, int y){
@@ -373,7 +368,7 @@ public class Tetris{
       }
     }
     rowscleared += cool;
-    displayNumbers("" + rowscleared, 588, 24);
+    displayNumbers("" + rowscleared % 1000, 588, 24);
     if (cool == 1)
       cool = 40;
     if (cool == 2)
@@ -383,7 +378,7 @@ public class Tetris{
     if (cool == 4)
       cool = 1200;
     points += cool * (level + 1);
-    displayScore("" + points, 760, 237);
+    displayScore("" + points % 1000000, 760, 237);
     int temp = level;
     level = rowscleared / 10;
     if (temp != level){
