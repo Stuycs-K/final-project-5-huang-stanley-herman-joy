@@ -13,13 +13,13 @@ void draw(){
       background(0);
       textSize(15);
       fill(255); //<>//
-      text("GAME OVER", bob.blocks.length * bob.size / 2 - 30, bob.blocks[0].length * bob.size /2);
-      text("press enter to play again", bob.blocks.length * bob.size / 2 - 60, bob.blocks[0].length * bob.size /2 + 15);
+      text("GAME OVER", width/2, height/2);
+      text("press enter to play again", width/2, height/2 + 15);
     }
   }
 }
 void keyPressed(){
-  if (!done){
+  if (!done && start){
     if (key == 'a' && bob.canleft()) {
       bob.joe.moveleft();
       bob.movejoe2();
