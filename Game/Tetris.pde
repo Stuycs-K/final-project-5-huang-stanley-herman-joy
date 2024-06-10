@@ -22,6 +22,9 @@ public class Tetris{
     millis = millis();
     rowscleared = 0;
     points = 0;
+    PImage playfield = loadImage("play.png");
+    playfield.resize(375, 602);
+    image(playfield, 350, 120);
   }
   boolean run(){
     //System.out.println(joe.wide + "," + joe.tall);
@@ -78,7 +81,7 @@ public class Tetris{
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = 0; j < joe.blocks[0].length; j++){
         if (joe.blocks[j][i] != null){
-          if (joe.blocks[j][i].getX() / size == 11 || blocks[joe.blocks[j][i].getX() / size - 11][joe.blocks[j][i].getY() / size] != null) {
+          if (joe.blocks[j][i].getX() / size == 10 || blocks[joe.blocks[j][i].getX() / size - 11][joe.blocks[j][i].getY() / size] != null) {
             return false;
           }
           break;
@@ -186,10 +189,10 @@ public class Tetris{
             }
             background(0);
             display();
-          }
+          } //<>//
         }
       }
-    } //<>//
+    }
   } //<>//
   boolean lose() {
     for (int i = 0; i < blocks.length; i++) {

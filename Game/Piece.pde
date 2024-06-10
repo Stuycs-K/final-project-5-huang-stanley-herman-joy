@@ -15,7 +15,7 @@ public class Piece{
   boolean up;
   ArrayList<Integer> bottom;
   public Piece(int num, int level){
-    topleft = new int[]{490, 0};
+    topleft = new int[]{490, 140};
     tint = 96;
     up = true;
     this.num = num;
@@ -206,7 +206,7 @@ public class Piece{
     }
   }  
   void rotate(){
-    if (topleft[0] / size < 11 - blocks[0].length && topleft[1] / size < 20 - blocks.length){
+    if (topleft[0] / size - 10 < 11 - blocks[0].length && topleft[1] / size < 20 - blocks.length){
       topleft[0] -= wherex * size;
       topleft[1] -= wherey * size;
       Block[][] newblocks = new Block[blocks[0].length][blocks.length];
