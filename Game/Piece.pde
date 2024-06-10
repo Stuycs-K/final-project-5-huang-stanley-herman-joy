@@ -11,14 +11,119 @@ public class Piece{
   int gameHeight = 40;
   int num;
   int tint;
+  color newColor;
   boolean up;
   ArrayList<Integer> bottom;
-  public Piece(int num){
+  public Piece(int num, int level){
     topleft = new int[]{140, 0};
     tint = 96;
     up = true;
     this.num = num;
-    if (num == 1){
+    if (level % 10 == 0){
+      if (num % 3 == 0)
+        newColor = color(0, 82, 232);
+      else if(num % 3 == 1)
+        newColor = color(60, 188, 252);
+      else
+        newColor = color(0, 88, 248);
+    }
+    else if (level % 10 == 1){
+      if (num % 3 == 0)
+        newColor = color(0, 157, 0);
+      else if(num % 3 == 1)
+        newColor = color(184, 248, 24);
+      else
+        newColor = color(0, 168, 0);
+    }
+    else if (level % 10 == 2){
+      if (num % 3 == 0)
+        newColor = color(216, 0, 204);
+      else if(num % 3 == 1)
+        newColor = color(248, 120, 248);
+      else
+        newColor = color(216, 0, 204);
+    }
+    else if (level % 10 == 3){
+      if (num % 3 == 0)
+        newColor = color(0, 88, 248);
+      else if(num % 3 == 1)
+        newColor = color(88, 216, 84);
+      else
+        newColor = color(0, 88, 248);
+    }
+    else if (level % 10 == 4){
+      if (num % 3 == 0)
+        newColor = color(228, 0, 88);
+      else if(num % 3 == 1)
+        newColor = color(88, 248, 152);
+      else
+        newColor = color(228, 0, 88);
+    }
+    else if (level % 10 == 5){
+      if (num % 3 == 0)
+        newColor = color(88, 248, 152);
+      else if(num % 3 == 1)
+        newColor = color(104, 136, 252);
+      else
+        newColor = color(88, 248, 152);
+    }
+    else if (level % 10 == 6){
+      if (num % 3 == 0)
+        newColor = color(248, 56, 0);
+      else if(num % 3 == 1)
+        newColor = color(124, 124, 124);
+      else
+        newColor = color(248, 56, 0);
+    }
+    else if (level % 10 == 7){
+      if (num % 3 == 0)
+        newColor = color(104, 68, 252);
+      else if(num % 3 == 1)
+        newColor = color(168, 0, 32);
+      else
+        newColor = color(104, 68, 252);
+    }
+    else if (level % 10 == 8){
+      if (num % 3 == 0)
+        newColor = color(0, 88, 248);
+      else if(num % 3 == 1)
+        newColor = color(248, 56, 0);
+      else
+        newColor = color(0, 88, 248);
+    }
+    else if (level % 10 == 9){
+      if (num % 3 == 0)
+        newColor = color(248, 56, 0);
+      else if(num % 3 == 1)
+        newColor = color(242, 160, 68);
+      else
+        newColor = color(248, 56, 0);
+    }
+    if (num % 3 == 0){
+      for (int i = 0; i < design.pixels.length; i++){
+        if (green(design.pixels[i]) < 200){
+          design.pixels[i] = newColor;
+        }
+      }
+      design.updatePixels();
+    }
+    if (num % 3 == 1){
+      for (int i = 0; i < design.pixels.length; i++){
+        if (green(design1.pixels[i]) < 200){
+          design1.pixels[i] = newColor;
+        }
+      }
+      design1.updatePixels();
+    }
+    if (num % 3 == 2){
+      for (int i = 0; i < design.pixels.length; i++){
+        if (green(design1.pixels[i]) < 200){
+          design1.pixels[i] = newColor;
+        }
+      }
+      design1.updatePixels();
+    }
+    if (num == 0){
       blocks = new Block[3][3];
       blocks[0][0] = new Block(topleft[0], topleft[1], design);
       blocks[1][0] = new Block(topleft[0] + size, topleft[1], design);
@@ -27,7 +132,7 @@ public class Piece{
       tall = 2;
       wide = 3;
     }
-    if (num == 2) {
+    if (num == 1) {
       blocks = new Block[3][3];
       blocks[0][0] = new Block(topleft[0], topleft[1], design1);
       blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1);
@@ -36,16 +141,16 @@ public class Piece{
       tall = 2;
       wide = 3;
     }
-    if (num == 3) {
+    if (num == 2) {
       blocks = new Block[3][3];
       blocks[0][0] = new Block(topleft[0], topleft[1], design1);
       blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1);
-      blocks[2][0] = new Block(topleft[0] + size * 2, topleft[1], design1);
-      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design1);
+      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design1);
+      blocks[2][1] = new Block(topleft[0] + 2 * size, topleft[1] + size, design1);
       tall = 2;
-      wide = 3;  
+      wide = 3;
     }
-    if (num == 4) {
+    if (num == 3) {
       blocks = new Block[2][2];
       blocks[0][0] = new Block(topleft[0], topleft[1], design);
       blocks[0][1] = new Block(topleft[0], topleft[1] + size, design);
@@ -54,25 +159,7 @@ public class Piece{
       tall = 2;
       wide = 2;
     }
-    if (num == 5) {
-      blocks = new Block[4][4];
-      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design);
-      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design);
-      blocks[2][1] = new Block(topleft[0] + 2 * size, topleft[1] + size, design);
-      blocks[3][1] = new Block(topleft[0] + 3 * size, topleft[1] + size, design);
-      tall = 1;
-      wide = 4;
-    }
-     if (num == 6) {
-      blocks = new Block[3][3];
-      blocks[0][0] = new Block(topleft[0], topleft[1], design1);
-      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1);
-      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design1);
-      blocks[2][1] = new Block(topleft[0] + 2 * size, topleft[1] + size, design1);
-      tall = 2;
-      wide = 3;
-    }
-    if (num == 7) {
+    if (num == 4) {
       blocks = new Block[3][3];
       blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1);
       blocks[2][0] = new Block(topleft[0] + 2 * size, topleft[1], design1);
@@ -80,6 +167,24 @@ public class Piece{
       blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design1);
       tall = 2;
       wide = 3;
+    }
+    if (num == 5) {
+      blocks = new Block[3][3];
+      blocks[0][0] = new Block(topleft[0], topleft[1], design1);
+      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1);
+      blocks[2][0] = new Block(topleft[0] + size * 2, topleft[1], design1);
+      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design1);
+      tall = 2;
+      wide = 3;  
+    }
+    if (num == 6) {
+      blocks = new Block[4][4];
+      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design);
+      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design);
+      blocks[2][1] = new Block(topleft[0] + 2 * size, topleft[1] + size, design);
+      blocks[3][1] = new Block(topleft[0] + 3 * size, topleft[1] + size, design);
+      tall = 1;
+      wide = 4;
     }
     findtopleft();
   }
