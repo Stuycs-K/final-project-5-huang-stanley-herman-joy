@@ -57,7 +57,8 @@ void keyPressed(){
   }
   if (key == ENTER) {
       background(0);
-      int top = bob.top;
+      int top = Math.max(bob.top, bob.points);
+      System.out.println(top);
       bob = new Tetris(top);
       bob.display();
       done = false;

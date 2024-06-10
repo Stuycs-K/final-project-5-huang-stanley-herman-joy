@@ -47,12 +47,12 @@ public class Tetris{
     lines.resize(410, 73);
     image(lines, 320, 0);
     rect(593, 17, 110, 40);
-    displayNumbers("" + rowscleared, 588, 24);
+    displayNumbers("" + rowscleared % 1000, 588, 24);
     PImage score = loadImage("score.png");
     score.resize(300, 350);
     image(score, 732, 3);
-    displayScore("" + top, 760, 120);
-    displayScore("" + points, 760, 237);
+    displayScore("" + top % 1000000, 760, 120);
+    displayScore("" + points % 1000000, 760, 237);
     PImage statistics = loadImage("statistics.png");
     statistics.resize(315, 650);
     image(statistics, 3, 183);
@@ -62,7 +62,7 @@ public class Tetris{
     PImage stage = loadImage("level.png");
     stage.resize(240, 135);
     image(stage, 730, 640);
-    displayLevel("" + level, 790, 709);
+    displayLevel("" + level % 100, 790, 709);
   }
   void findNextPiece(int random){
     rect(765, 450, 150, 155);
@@ -107,7 +107,7 @@ public class Tetris{
         joe = new Piece(nextPiece.num, level, new int[]{490, 105}, size);
         joe2 = new Piece(joe.num, level, new int[]{490, 105}, size);
         stats[joe.num]++;
-        displayStats("" + stats[joe.num], 157, 319 + joe.num * 65);
+        displayStats("" + stats[joe.num] % 100, 157, 319 + joe.num * 65);
         findNextPiece(randomPiece());
         joe.display();
         plunge(joe2);
@@ -115,10 +115,6 @@ public class Tetris{
           return true;
         }
       }
-      for (int i = 0; i < stats.length; i++) {
-        System.out.print(stats[i] + ", ");
-      }
-      System.out.println();
     }
     //debugBlocks(); DEBUGGGGGGG
     return lose();
@@ -129,7 +125,7 @@ public class Tetris{
         if (joe2.blocks[i][j] != null){
           noStroke();
           square(joe2.blocks[i][j].getX(), joe2.blocks[i][j].getY(), size);
-          square(joe2.blocks[i][j].getX(), joe2.blocks[i][j].getY(), size);
+          square(joe.blocks[i][j].getX(), joe.blocks[i][j].getY(), size);
         }
       }
     }
@@ -189,11 +185,11 @@ public class Tetris{
           square(joe2.blocks[i][j].getX(), joe2.blocks[i][j].getY(), size);
           joe2.blocks[i][j].setX(joe.blocks[i][j].getX());
           joe2.blocks[i][j].setY(joe.blocks[i][j].getY());
-        } //<>//
+        }
       }
     }
   }
-  void plunge(Piece cool){
+  void plunge(Piece cool){ //<>//
     while (willfall(cool)){
       cool.fall();
     }
@@ -389,7 +385,7 @@ public class Tetris{
       updateBlocks();
     }
     rate = rates[Math.min(level, 29)] * 1000 / 60;
-    displayLevel("" + level, 790, 709);
+    displayLevel("" + level % 1000, 790, 709);
     displayPieceStats();
   }
   boolean lose() {
