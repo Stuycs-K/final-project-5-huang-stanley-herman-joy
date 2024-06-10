@@ -15,7 +15,7 @@ public class Piece{
   ArrayList<Integer> bottom;
   public Piece(int num){
     topleft = new int[]{140, 0};
-    tint = 128;
+    tint = 96;
     up = true;
     this.num = num;
     if (num == 1){
@@ -172,7 +172,7 @@ public class Piece{
       }
     tint(255, tint);
     display();
-    if (tint == 192 || tint == 64){
+    if (tint == 128 || tint == 64){
       up = !up;
     }
     if (up){
