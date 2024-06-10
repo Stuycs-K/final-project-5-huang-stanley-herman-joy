@@ -9,7 +9,7 @@ public class Tetris{
   PImage design1 = loadImage("best1.png");
   int size = 35;
   int rowscleared = 0;
-  int level = 0;
+  int level = 2;
   int[] rates = new int[]{48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
   int rate = rates[Math.min(rowscleared / 10, 29)] * 1000 / 60;
   public Tetris(){
@@ -23,8 +23,11 @@ public class Tetris{
     rowscleared = 0;
     points = 0;
     PImage playfield = loadImage("play.png");
-    playfield.resize(375, 602);
-    image(playfield, 350, 120);
+    playfield.resize(410, 755);
+    image(playfield, 320, 78);
+    fill(0);
+    noStroke();
+    rect(350, 105, 350, 700);
   }
   boolean run(){
     //System.out.println(joe.wide + "," + joe.tall);
@@ -46,11 +49,12 @@ public class Tetris{
               return false;
             }
             if (joe.blocks[i][j] != null){
-              blocks[joe.topleft[0] / size + i - joe.wherex - 10][joe.topleft[1] / size + j - joe.wherey] = joe.blocks[i][j];
+              blocks[joe.topleft[0] / size + i - joe.wherex - 10][joe.topleft[1] / size + j - joe.wherey - 3] = joe.blocks[i][j];
             }
             display();
           }
         }
+        clearRow();
         joe = new Piece(randomPiece(), level); //<>//
         joe2 = new Piece(joe.num, level);
         joe.display();
@@ -58,7 +62,6 @@ public class Tetris{
         if (!canspawn()){
           return true;
         }
-        clearRow();
       }
     }
     debugBlocks();
@@ -68,7 +71,7 @@ public class Tetris{
     for (int i = 0; i < cool.blocks.length; i++){
       for (int j = cool.blocks[0].length - 1; j > -1; j--){
         if (cool.blocks[i][j] != null){
-          if (cool.blocks[i][j].getY() / size == blocks[0].length - 1 || blocks[cool.blocks[i][j].getX() / size - 10][cool.blocks[i][j].getY() / size + 1] != null) {
+          if (cool.blocks[i][j].getY() / size - 3 == blocks[0].length - 1 || blocks[cool.blocks[i][j].getX() / size - 10][cool.blocks[i][j].getY() / size - 2] != null) {
             return false;
           }
           break;
@@ -81,7 +84,7 @@ public class Tetris{
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = 0; j < joe.blocks[0].length; j++){
         if (joe.blocks[j][i] != null){
-          if (joe.blocks[j][i].getX() / size == 10 || blocks[joe.blocks[j][i].getX() / size - 11][joe.blocks[j][i].getY() / size] != null) {
+          if (joe.blocks[j][i].getX() / size == 10 || blocks[joe.blocks[j][i].getX() / size - 11][joe.blocks[j][i].getY() / size - 3] != null) {
             return false;
           }
           break;
@@ -94,7 +97,7 @@ public class Tetris{
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = joe.blocks[0].length - 1; j > -1 ; j--){
         if (joe.blocks[j][i] != null){
-          if (joe.blocks[j][i].getX() / size - 9 == blocks.length || blocks[joe.blocks[j][i].getX() / size - 9][joe.blocks[j][i].getY() / size] != null) {
+          if (joe.blocks[j][i].getX() / size - 9 == blocks.length || blocks[joe.blocks[j][i].getX() / size - 9][joe.blocks[j][i].getY() / size - 3] != null) {
             return false;
           }
           break;
@@ -136,7 +139,7 @@ public class Tetris{
   boolean canspawn(){
     for (int i = 1; i < joe.blocks.length; i++){
       for (int j = 0; j < joe.blocks[0].length; j++){
-        if (blocks[joe.topleft[0] / 35 + j - 10][joe.topleft[1] / 35 + i] != null){
+        if (blocks[joe.topleft[0] / 35 + j - 10][joe.topleft[1] / 35 + i - 3] != null){
           return false;
         }
       }
@@ -182,18 +185,18 @@ public class Tetris{
         for (int k = i; k > 0; k--) {
           for (int j = 0; j < blocks.length; j++) {
             if (blocks[j][k-1] != null) {
-              blocks[j][k] = new Block(j * size, (k) * size, blocks[j][k-1].design);
+              blocks[j][k] = new Block((j + 10) * size, (k + 3) * size, blocks[j][k-1].design);
             }
             else {
               blocks[j][k] = null;
-            }
-            background(0);
+            } //<>//
+            rect(350, 105, 350, 700);
             display();
-          } //<>//
+          }
         }
       }
     }
-  } //<>//
+  }
   boolean lose() {
     for (int i = 0; i < blocks.length; i++) {
       if (blocks[i][0] != null) {
