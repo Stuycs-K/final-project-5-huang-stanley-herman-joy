@@ -10,7 +10,11 @@ Just press the run button and it will run
 
 ## How to play
 the 'a' key moves the piece to the right
+
 the 'd' key moves the piece to the left
+
 the 's' key drops the piece all the way to the bottom
+
 the 'r' key rotates the piece
+
 the enter key starts a new game
