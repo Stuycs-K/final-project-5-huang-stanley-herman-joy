@@ -1,27 +1,21 @@
 Tetris bob;
 boolean done = false;
+boolean start = false;
+PImage startImage;
 void draw(){
-  if (!done){
-    /*
-    stroke(255);
-    for (int i = 0; i < 350; i+=35) {
-      line(i-1, -1, i-1, 699);
+  if (start) {
+    if (!done){
+      if (bob.run()){
+        done = true;
+      }
     }
-    for (int i = 0; i < 700; i+=35) {
-      line(0, i-1, 350, i-1);
+    else{
+      background(0);
+      textSize(15);
+      fill(255); //<>//
+      text("GAME OVER", bob.blocks.length * bob.size / 2 - 30, bob.blocks[0].length * bob.size /2);
+      text("press enter to play again", bob.blocks.length * bob.size / 2 - 60, bob.blocks[0].length * bob.size /2 + 15);
     }
-    line(350, 0, 350, 700);
-    */
-    if (bob.run()){ //<>//
-      done = true;
-    }
-  }
-  else{
-    background(0);
-    fill(255);
-    textSize(15);
-    text("GAME OVER", bob.blocks.length * bob.size / 2 - 30, bob.blocks[0].length * bob.size /2);
-    text("press enter to play again", bob.blocks.length * bob.size / 2 - 60, bob.blocks[0].length * bob.size /2 + 15);
   }
 }
 void keyPressed(){
@@ -59,9 +53,16 @@ void keyPressed(){
       bob.display();
       done = false;
   }
+  if (key == ' ') {
+    start = true;
+    background(0);
+    bob = new Tetris();
+  }
 }
   void setup(){
     size(1050, 840);
-    background(0);
     bob = new Tetris();
+    background(0);
+    startImage = loadImage("start.png");
+    image(startImage, 0, -30, 1050, 870);
   }
