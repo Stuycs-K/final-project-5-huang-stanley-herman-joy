@@ -46,7 +46,6 @@ made it so we can reset the game and made a lose screen
 
 made start and game over screen, changed the rates at which the pieces fall, made the stats for the pieces
 
-
 ## Stanley Huang
 
 ### 5/22
@@ -93,47 +92,6 @@ Everything works for the new board size, rotate now doesn't move the piece sidew
 
 Changed background to black, pieces spawn horizontally oriented, added sprites for blocks, included unable to spawn piece as a loss condition, if you lose nothing can be interacted with
 
-### 6/9
-
-displayed the stats for the pieces, made shortcuts to higher levels (faster speed)
-e sure they didn't go out of the screen
-
-### 5/27
-
-wrote a buggy plunge
-
-### 5/28
-
-tried to fix plunge after both of us made changes, started working on clearing a row
-
-### 5/29
-
-added pieces we forgot about and tried clearing a row with a different method
-
-### 5/30
-
-debug the clearRow and found out the way we first implemented the array was backwards
-
-### 5/31
-
-randomized the pieces and fixed the pieces I added on 5/29
-
-### 6/2
-
-organized the code so it's easier for us to see
-
-### 6/3
-
-tried changing the size of the board and was fixing the problems that came up because of that
-
-### 6/5
-
-continued what we did on 6/3 - made numbers into variables to use in all the code
-
-### 6/6
-
-made it so we can reset the game and made a lose screen
-
 ### 6/8
 
 show where the piece will end up if it keeps falling
@@ -141,7 +99,3 @@ show where the piece will end up if it keeps falling
 ### 6/9
 
 the piece's future is displayed really coolly, made the size of sketch bigger, 10 different color schemes that cycles, skip level button that updates all color schemes, display statistics on how many times a piece spawned, score, top score, lines cleared, next piece
-
-### 5/26
-
-Wrote rotate(), fall() and moveleft()/moveright() works for bigger Pieces, Pieces that reach the bottom stay on screen
