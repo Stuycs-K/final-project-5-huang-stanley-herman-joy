@@ -36,7 +36,7 @@ public class Tetris{
     playfield.resize(410, 755);
     image(playfield, 320, 78);
     fill(0);
-    noStroke(); //<>//
+    noStroke(); //<>// //<>//
     rect(350, 105, 350, 700);
     PImage nextpiece = loadImage("next.png");
     nextpiece.resize(220, 270);
@@ -104,13 +104,8 @@ public class Tetris{
           }
         }
         clearRow();
-        joe = new Piece(nextPiece.num, level, new int[]{490, 105}, size);
-        joe2 = new Piece(joe.num, level, new int[]{490, 105}, size);
-        stats[joe.num]++;
-        displayStats("" + stats[joe.num] % 100, 157, 319 + joe.num * 65);
-        findNextPiece(randomPiece());
-        joe.display();
-        plunge(joe2);
+        newPiece();
+        display();
         if (!canspawn()){
           return true;
         }
@@ -130,7 +125,11 @@ public class Tetris{
       }
     }
     joe = new Piece(nextPiece.num, level, new int[]{490, 105}, size);
+    int tint = joe2.tint;
+    boolean up = joe2.up;
     joe2 = new Piece(joe.num, level, new int[]{490, 105}, size);
+    joe2.tint = tint;
+    joe2.up = up;
     stats[joe.num]++;
     displayStats("" + stats[joe.num], 157, 319 + joe.num * 65);
     findNextPiece(randomPiece());
@@ -186,7 +185,7 @@ public class Tetris{
           joe2.blocks[i][j].setX(joe.blocks[i][j].getX());
           joe2.blocks[i][j].setY(joe.blocks[i][j].getY());
         }
-      }
+      } //<>//
     }
   }
   void plunge(Piece cool){ //<>//
@@ -213,13 +212,13 @@ public class Tetris{
           return false;
         }
       }
-    }
+    } //<>//
     return true;
   }
   void display(){ //<>//
     for (int i = 0; i < blocks.length; i++){
       for (int j = 0; j < blocks[0].length; j++){
-        if (blocks[i][j] != null){
+        if (blocks[i][j] != null){ //<>//
           blocks[i][j].display();
         }
       } //<>//
