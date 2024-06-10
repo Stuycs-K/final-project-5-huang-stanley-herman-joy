@@ -6,16 +6,16 @@ public class Piece{
   int[] topleft;
   int wide, tall;
   int wherex, wherey;
-  int size = 35;
+  int size;
   int gameWidth = 10;
   int gameHeight = 40;
   int num;
   int tint;
-  color newColor;
   boolean up;
   ArrayList<Integer> bottom;
-  public Piece(int num, int level, int[] topleft){
-    System.out.println(topleft[1]);
+  public Piece(int num, int level, int[] topleft, int size){
+    color newColor;
+    this.size = size;
     this.topleft = new int[]{topleft[0], topleft[1]};
     tint = 96;
     up = true;
@@ -92,7 +92,7 @@ public class Piece{
       else
         newColor = color(0, 88, 248);
     }
-    else if (level % 10 == 9){
+    else{
       if (num % 3 == 0)
         newColor = color(248, 56, 0);
       else if(num % 3 == 1)
@@ -126,64 +126,64 @@ public class Piece{
     }
     if (num == 0){
       blocks = new Block[3][3];
-      blocks[0][0] = new Block(topleft[0], topleft[1], design);
-      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design);
-      blocks[2][0] = new Block(topleft[0] + 2 * size, topleft[1], design);
-      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design);
+      blocks[0][0] = new Block(topleft[0], topleft[1], design, size);
+      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design, size);
+      blocks[2][0] = new Block(topleft[0] + 2 * size, topleft[1], design, size);
+      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design, size);
       tall = 2;
       wide = 3;
     }
     if (num == 1) {
       blocks = new Block[3][3];
-      blocks[0][0] = new Block(topleft[0], topleft[1], design1);
-      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1);
-      blocks[2][0] = new Block(topleft[0] + 2 * size, topleft[1], design1);
-      blocks[2][1] = new Block(topleft[0] + 2 * size, topleft[1] + size, design1);
+      blocks[0][0] = new Block(topleft[0], topleft[1], design1, size);
+      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1, size);
+      blocks[2][0] = new Block(topleft[0] + 2 * size, topleft[1], design1, size);
+      blocks[2][1] = new Block(topleft[0] + 2 * size, topleft[1] + size, design1, size);
       tall = 2;
       wide = 3;
     }
     if (num == 2) {
       blocks = new Block[3][3];
-      blocks[0][0] = new Block(topleft[0], topleft[1], design1);
-      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1);
-      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design1);
-      blocks[2][1] = new Block(topleft[0] + 2 * size, topleft[1] + size, design1);
+      blocks[0][0] = new Block(topleft[0], topleft[1], design1, size);
+      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1, size);
+      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design1, size);
+      blocks[2][1] = new Block(topleft[0] + 2 * size, topleft[1] + size, design1, size);
       tall = 2;
       wide = 3;
     }
     if (num == 3) {
       blocks = new Block[2][2];
-      blocks[0][0] = new Block(topleft[0], topleft[1], design);
-      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design);
-      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design);
-      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design);
+      blocks[0][0] = new Block(topleft[0], topleft[1], design, size);
+      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design, size);
+      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design, size);
+      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design, size);
       tall = 2;
       wide = 2;
     }
     if (num == 4) {
       blocks = new Block[3][3];
-      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1);
-      blocks[2][0] = new Block(topleft[0] + 2 * size, topleft[1], design1);
-      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design1);
-      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design1);
+      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1, size);
+      blocks[2][0] = new Block(topleft[0] + 2 * size, topleft[1], design1, size);
+      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design1, size);
+      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design1, size);
       tall = 2;
       wide = 3;
     }
     if (num == 5) {
       blocks = new Block[3][3];
-      blocks[0][0] = new Block(topleft[0], topleft[1], design1);
-      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1);
-      blocks[2][0] = new Block(topleft[0] + size * 2, topleft[1], design1);
-      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design1);
+      blocks[0][0] = new Block(topleft[0], topleft[1], design1, size);
+      blocks[1][0] = new Block(topleft[0] + size, topleft[1], design1, size);
+      blocks[2][0] = new Block(topleft[0] + size * 2, topleft[1], design1, size);
+      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design1, size);
       tall = 2;
       wide = 3;  
     }
     if (num == 6) {
       blocks = new Block[4][4];
-      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design);
-      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design);
-      blocks[2][1] = new Block(topleft[0] + 2 * size, topleft[1] + size, design);
-      blocks[3][1] = new Block(topleft[0] + 3 * size, topleft[1] + size, design);
+      blocks[0][1] = new Block(topleft[0], topleft[1] + size, design, size);
+      blocks[1][1] = new Block(topleft[0] + size, topleft[1] + size, design, size);
+      blocks[2][1] = new Block(topleft[0] + 2 * size, topleft[1] + size, design, size);
+      blocks[3][1] = new Block(topleft[0] + 3 * size, topleft[1] + size, design, size);
       tall = 1;
       wide = 4;
     }
