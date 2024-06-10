@@ -15,7 +15,7 @@ public class Piece{
   boolean up;
   ArrayList<Integer> bottom;
   public Piece(int num, int level){
-    topleft = new int[]{140, 0};
+    topleft = new int[]{490, 0};
     tint = 96;
     up = true;
     this.num = num;

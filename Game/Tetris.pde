@@ -26,6 +26,7 @@ public class Tetris{
   boolean run(){
     //System.out.println(joe.wide + "," + joe.tall);
     //System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
+    System.out.println(bob.canrotate());
     joe.display();
     joe2.fancydisplay(); //<>//
     if (willfall(joe)){
@@ -42,7 +43,7 @@ public class Tetris{
               return false;
             }
             if (joe.blocks[i][j] != null){
-              blocks[joe.topleft[0] / size + i - joe.wherex][joe.topleft[1] / size + j - joe.wherey] = joe.blocks[i][j];
+              blocks[joe.topleft[0] / size + i - joe.wherex - 10][joe.topleft[1] / size + j - joe.wherey] = joe.blocks[i][j];
             }
             display();
           }
@@ -64,7 +65,7 @@ public class Tetris{
     for (int i = 0; i < cool.blocks.length; i++){
       for (int j = cool.blocks[0].length - 1; j > -1; j--){
         if (cool.blocks[i][j] != null){
-          if (cool.blocks[i][j].getY() / size == blocks[0].length - 1 || blocks[cool.blocks[i][j].getX() / size][cool.blocks[i][j].getY() / size + 1] != null) {
+          if (cool.blocks[i][j].getY() / size == blocks[0].length - 1 || blocks[cool.blocks[i][j].getX() / size - 10][cool.blocks[i][j].getY() / size + 1] != null) {
             return false;
           }
           break;
@@ -77,7 +78,7 @@ public class Tetris{
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = 0; j < joe.blocks[0].length; j++){
         if (joe.blocks[j][i] != null){
-          if (joe.blocks[j][i].getX() / size == 0 || blocks[joe.blocks[j][i].getX() / size - 1][joe.blocks[j][i].getY() / size] != null) {
+          if (joe.blocks[j][i].getX() / size == 11 || blocks[joe.blocks[j][i].getX() / size - 11][joe.blocks[j][i].getY() / size] != null) {
             return false;
           }
           break;
@@ -90,7 +91,7 @@ public class Tetris{
     for (int i = 0; i < joe.blocks.length; i++){
       for (int j = joe.blocks[0].length - 1; j > -1 ; j--){
         if (joe.blocks[j][i] != null){
-          if (joe.blocks[j][i].getX() / size == blocks.length-1 || blocks[joe.blocks[j][i].getX() / size + 1][joe.blocks[j][i].getY() / size] != null) {
+          if (joe.blocks[j][i].getX() / size - 9 == blocks.length || blocks[joe.blocks[j][i].getX() / size - 9][joe.blocks[j][i].getY() / size] != null) {
             return false;
           }
           break;
@@ -118,7 +119,7 @@ public class Tetris{
     }
   }
   boolean canrotate(){
-    int x = (joe.topleft[0] / size) - joe.wherex;
+    int x = (joe.topleft[0] / size) - joe.wherex - 10;
     int y = (joe.topleft[1] / size) - joe.wherey;
     for (int i = 0; i < joe.blocks[0].length; i++){
       for (int j = 0; j < joe.blocks.length; j++){
@@ -132,7 +133,7 @@ public class Tetris{
   boolean canspawn(){
     for (int i = 1; i < joe.blocks.length; i++){
       for (int j = 0; j < joe.blocks[0].length; j++){
-        if (blocks[joe.topleft[0] / 35 + j][joe.topleft[1] / 35 + i] != null){
+        if (blocks[joe.topleft[0] / 35 + j - 10][joe.topleft[1] / 35 + i] != null){
           return false;
         }
       }
@@ -188,7 +189,7 @@ public class Tetris{
           }
         }
       }
-    }
+    } //<>//
   } //<>//
   boolean lose() {
     for (int i = 0; i < blocks.length; i++) {
