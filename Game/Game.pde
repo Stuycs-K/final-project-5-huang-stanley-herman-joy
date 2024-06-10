@@ -42,6 +42,14 @@ void keyPressed(){
       bob.joe.display();
       bob.joe2.display();
     }
+    if (key == 'm'){
+      bob.level++;
+      bob.displayLevel("" + bob.level, 790, 709);
+      bob.findNextPiece(bob.nextPiece.num);
+      bob.displayPieceStats();
+      bob.updateBlocks();
+      bob.newPiece();
+    }
     if (key == 's') {
       bob.plunge(bob.joe);
       bob.joe.display();

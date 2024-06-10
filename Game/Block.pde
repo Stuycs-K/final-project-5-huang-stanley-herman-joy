@@ -27,7 +27,7 @@ public class Block{
   void display(){
     image(design, xcor + 1, ycor + 1);
   }
-  void findColor(int level){
+  void updateColor(int level){
     color newColor;
     if (level % 10 == 0){
       if (num % 3 == 0)

@@ -237,7 +237,7 @@ public class Piece{
           if (blocks[i][j] != null){
             noStroke();
             square(blocks[i][j].getX(), blocks[i][j].getY(), size);
-            blocks[i][j].setX(blocks[i][j].getX() + size);
+            blocks[i][j].setX(blocks[i][j].getX() - size);
           }
         }
       }
