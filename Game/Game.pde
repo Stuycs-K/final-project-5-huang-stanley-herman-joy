@@ -11,10 +11,10 @@ void draw(){
     }
     else{
       background(0);
-      textSize(15);
+      textSize(50);
       fill(255); //<>//
-      text("GAME OVER", width/2, height/2);
-      text("press enter to play again", width/2, height/2 + 15);
+      text("GAME OVER", width/2 - 100, height/2);
+      text("press enter to play again", width/2 - 250, height/2 + 45);
     }
   }
 }
