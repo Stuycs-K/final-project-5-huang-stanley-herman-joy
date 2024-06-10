@@ -4,6 +4,7 @@ public class Tetris{
   Block[][] blocks;
   Piece joe;
   Piece joe2;
+  Piece nextPiece;
   int millis;
   PImage design = loadImage("best.png");
   PImage design1 = loadImage("best1.png");
@@ -14,8 +15,9 @@ public class Tetris{
   int rate = rates[Math.min(rowscleared / 10, 29)] * 1000 / 60;
   public Tetris(){
     blocks = new Block[10][20];
-    joe = new Piece(randomPiece(), level);
-    joe2 = new Piece(joe.num, level);
+    joe = new Piece(randomPiece(), level, new int[]{490, 105});
+    joe2 = new Piece(joe.num, level, new int[]{490, 105});
+    findNextPiece();
     plunge(joe2);
     joe.display();
     joe2.display();
@@ -28,11 +30,34 @@ public class Tetris{
     fill(0);
     noStroke();
     rect(350, 105, 350, 700);
+    PImage nextpiece = loadImage("next.png");
+    nextpiece.resize(220, 270);
+    image(nextpiece, 730, 370);
+    rect(765, 450, 150, 155);
+    nextPiece.display();
+  }
+  void findNextPiece(){
+    rect(765, 450, 150, 155);
+    int random = randomPiece();
+    int x = 765;
+    int y = 485;
+    if (random == 6){
+      x = 770;
+      y = 467;
+    }
+    else if (random == 3){
+      x = 805;
+    }
+    else{
+      x = 787;
+    }
+    nextPiece = new Piece(random, level, new int[]{x, y});
+    nextPiece.display();
   }
   boolean run(){
     //System.out.println(joe.wide + "," + joe.tall);
     //System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
-    System.out.println(bob.canrotate());
+    System.out.println(canrotate());
     joe.display();
     joe2.fancydisplay(); //<>//
     if (willfall(joe)){
@@ -55,8 +80,9 @@ public class Tetris{
           }
         }
         clearRow();
-        joe = new Piece(randomPiece(), level); //<>//
-        joe2 = new Piece(joe.num, level);
+        joe = new Piece(nextPiece.num, level, new int[]{490, 105}); //<>//
+        joe2 = new Piece(joe.num, level, new int[]{490, 105});
+        findNextPiece();
         joe.display();
         plunge(joe2);
         if (!canspawn()){
@@ -163,7 +189,7 @@ public class Tetris{
         }
         else{
           System.out.print("0");
-        }
+        } //<>//
       }
       System.out.println();
     }
@@ -189,7 +215,7 @@ public class Tetris{
             }
             else {
               blocks[j][k] = null;
-            } //<>//
+            }
             rect(350, 105, 350, 700);
             display();
           }
