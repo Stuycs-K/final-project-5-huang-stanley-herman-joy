@@ -208,7 +208,7 @@ public class Tetris{
   boolean canspawn(){
     for (int i = 1; i < joe.blocks.length; i++){
       for (int j = 0; j < joe.blocks[0].length; j++){
-        if (joe.blocks[i][j] != null && blocks[joe.topleft[0] / 35 + j - 10][joe.topleft[1] / 35 + i - 3] != null){
+        if (joe.blocks[j][i] != null && blocks[joe.topleft[0] / 35 + j - 10][joe.topleft[1] / 35 + i - 3] != null){
           return false;
         }
       }
