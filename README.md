@@ -18,3 +18,6 @@ the 's' key drops the piece all the way to the bottom
 the 'r' key rotates the piece
 
 the enter key starts a new game
+
+### link to video
+https://drive.google.com/file/d/1q3RWlw9tC-IOPaJNgKAWKL8H0qtyr03b/view?usp=sharing 
