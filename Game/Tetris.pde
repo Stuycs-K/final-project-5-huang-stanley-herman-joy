@@ -5,15 +5,17 @@ public class Tetris{
   Piece joe;
   Piece joe2;
   int millis;
-  PImage design = loadImage("redcar.png");
+  PImage design = loadImage("best.png");
+  PImage design1 = loadImage("best1.png");
   int size = 35;
   int rowscleared = 0;
+  int level = 0;
   int[] rates = new int[]{48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
   int rate = rates[Math.min(rowscleared / 10, 29)] * 1000 / 60;
   public Tetris(){
     blocks = new Block[10][20];
-    joe = new Piece(randomPiece());
-    joe2 = new Piece(joe.num);
+    joe = new Piece(randomPiece(), level);
+    joe2 = new Piece(joe.num, level);
     plunge(joe2);
     joe.display();
     joe2.display();
@@ -33,7 +35,7 @@ public class Tetris{
       }
     }
     else{
-      if (millis() > millis + rate / 2){
+      if (millis() > millis + rate / 4){
         for (int i = 0; i < joe.blocks.length; i++){
           for (int j = 0; j < joe.blocks[0].length; j++){
             if (joe.topleft[1] / size + j - joe.wherey < 0){
@@ -45,8 +47,8 @@ public class Tetris{
             display();
           }
         }
-        joe = new Piece(randomPiece()); //<>//
-        joe2 = new Piece(joe.num);
+        joe = new Piece(randomPiece(), level); //<>//
+        joe2 = new Piece(joe.num, level);
         joe.display();
         plunge(joe2);
         if (!canspawn()){
@@ -161,7 +163,7 @@ public class Tetris{
     System.out.println();
   }
   int randomPiece(){
-    return (int)(Math.random() * 7)+1;
+    return (int)(Math.random() * 7);
   }
   void clearRow() {
     for (int i = 0; i < blocks[0].length; i++) {
@@ -187,7 +189,7 @@ public class Tetris{
         }
       }
     }
-  }
+  } //<>//
   boolean lose() {
     for (int i = 0; i < blocks.length; i++) {
       if (blocks[i][0] != null) {
