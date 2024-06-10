@@ -11,7 +11,7 @@ public class Tetris{
   int size = 35;
   int rowscleared = 0;
   int level = 3;
-  int[] rates = new int[]{48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
+  int[] rates = new int[]{48, 43, 38, 33, 28, 24, 20, 16, 12, 9, 9, 9, 6, 6, 6, 6, 5, 5, 5, 5, 4, 4, 4, 4, 4, 3, 3, 3, 2, 1};
   int rate = rates[Math.min(rowscleared / 10, 29)] * 1000 / 60;
   PImage numbers = loadImage("numbers.png");
   int[] stats = new int[]{0, 0, 0, 0, 0, 0, 0};

@@ -7,8 +7,6 @@ public class Piece{
   int wide, tall;
   int wherex, wherey;
   int size = 35;
-  int gameWidth = 10;
-  int gameHeight = 40;
   int num;
   int tint;
   color newColor;
