@@ -14,8 +14,9 @@ public class Piece{
   color newColor;
   boolean up;
   ArrayList<Integer> bottom;
-  public Piece(int num, int level){
-    topleft = new int[]{490, 105};
+  public Piece(int num, int level, int[] topleft){
+    System.out.println(topleft[1]);
+    this.topleft = new int[]{topleft[0], topleft[1]};
     tint = 96;
     up = true;
     this.num = num;
