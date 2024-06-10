@@ -42,6 +42,10 @@ continued what we did on 6/3 - made numbers into variables to use in all the cod
 
 made it so we can reset the game and made a lose screen
 
+### 6/9
+
+made start and game over screen, changed the rates at which the pieces fall, made the stats for the pieces
+
 
 ## Stanley Huang
 
@@ -88,3 +92,7 @@ Everything works for the new board size, rotate now doesn't move the piece sidew
 ### 6/6
 
 Changed background to black, pieces spawn horizontally oriented, added sprites for blocks, included unable to spawn piece as a loss condition, if you lose nothing can be interacted with
+
+### 6/9
+
+displayed the stats for the pieces, made shortcuts to higher levels (faster speed)
