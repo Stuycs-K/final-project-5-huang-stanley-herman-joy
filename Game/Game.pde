@@ -25,14 +25,14 @@ void keyPressed(){
       bob.movejoe2();
       bob.plunge(bob.joe2);
       bob.joe.display();
-      bob.joe2.display();
+      bob.joe2.fancydisplay();
     }
     if (key == 'd' && bob.canright()) {
       bob.joe.moveright();
       bob.movejoe2();
       bob.plunge(bob.joe2);
       bob.joe.display();
-      bob.joe2.display();
+      bob.joe2.fancydisplay();
     }
     if (key == 'r' && bob.canrotate()){
       bob.movejoe2();
@@ -40,7 +40,7 @@ void keyPressed(){
       bob.joe2.rotate();
       bob.plunge(bob.joe2);
       bob.joe.display();
-      bob.joe2.display();
+      bob.joe2.fancydisplay();
     }
     if (key == 'm'){
       bob.level++;
