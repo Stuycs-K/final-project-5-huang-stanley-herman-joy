@@ -254,6 +254,7 @@ public class Tetris{
     return (int)(Math.random() * 7);
   }
   void clearRow() {
+    int cool = 0;
     for (int i = 0; i < blocks[0].length; i++) {
       boolean complete = true;
       for (int j = 0; j < blocks.length; j++) {
@@ -262,7 +263,7 @@ public class Tetris{
         }
       }
       if (complete) {
-        rowscleared++;
+        cool++;
         for (int k = i; k > 0; k--) {
           for (int j = 0; j < blocks.length; j++) {
             if (blocks[j][k-1] != null) {
@@ -277,7 +278,18 @@ public class Tetris{
         }
       }
     }
+    rowscleared += cool;
     displayNumbers("" + rowscleared, 588, 24);
+    if (cool == 1)
+      cool = 40;
+    if (cool == 2)
+      cool = 100;
+    if (cool == 3)
+      cool = 300;
+    if (cool == 4)
+      cool = 1200;
+    points += cool * (level + 1);
+    displayScore("" + points, 760, 237);
   }
   boolean lose() {
     for (int i = 0; i < blocks.length; i++) {
