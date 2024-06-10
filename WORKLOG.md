@@ -4,12 +4,6 @@
 
 ### 5/24
 
-wrote the left and right methods and mad# Work Log
-
-## Joy Herman
-
-### 5/24
-
 wrote the left and right methods and made sure they didn't go out of the screen
 
 ### 5/27
@@ -140,16 +134,13 @@ continued what we did on 6/3 - made numbers into variables to use in all the cod
 
 made it so we can reset the game and made a lose screen
 
+### 6/8
 
-## Stanley Huang
+show where the piece will end up if it keeps falling
 
-### 5/22
+### 6/9
 
-Made the files, added method names to the classes, and wrote simple methods for Block
-
-### 5/23
-
-Wrote additional Block methods and started to write fall()
+the piece's future is displayed really coolly, made the size of sketch bigger, 10 different color schemes that cycles, skip level button that updates all color schemes, display statistics on how many times a piece spawned, score, top score, lines cleared, next piece
 
 ### 5/26
 
