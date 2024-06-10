@@ -14,6 +14,7 @@ public class Tetris{
   int[] rates = new int[]{48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
   int rate = rates[Math.min(rowscleared / 10, 29)] * 1000 / 60;
   PImage numbers = loadImage("numbers.png");
+  int[] stats = new int[]{0, 0, 0, 0, 0, 0, 0};
   public Tetris(){
     numbers.resize(400, 28);
     blocks = new Block[10][20];
@@ -30,7 +31,7 @@ public class Tetris{
     playfield.resize(410, 755);
     image(playfield, 320, 78);
     fill(0);
-    noStroke();
+    noStroke(); //<>//
     rect(350, 105, 350, 700);
     PImage nextpiece = loadImage("next.png");
     nextpiece.resize(220, 270);
@@ -42,6 +43,7 @@ public class Tetris{
     image(lines, 320, 0);
     rect(593, 17, 110, 40);
     displayNumbers("" + rowscleared, 588, 24);
+    stats = new int[]{0, 0, 0, 0, 0, 0, 0};
   }
   void findNextPiece(){
     rect(765, 450, 150, 155);
@@ -49,7 +51,7 @@ public class Tetris{
     int x = 765;
     int y = 485;
     if (random == 6){
-      x = 770;
+      x = 770; //<>//
       y = 467;
     }
     else if (random == 3){
@@ -62,9 +64,6 @@ public class Tetris{
     nextPiece.display();
   }
   boolean run(){
-    //System.out.println(joe.wide + "," + joe.tall);
-    //System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
-    System.out.println(canrotate());
     joe2.fancydisplay();
     joe.display();
     if (willfall(joe)){
@@ -87,6 +86,7 @@ public class Tetris{
           }
         }
         clearRow();
+        stats[joe.num]++;
         joe = new Piece(nextPiece.num, level, new int[]{490, 105}); //<>//
         joe2 = new Piece(joe.num, level, new int[]{490, 105});
         findNextPiece();
@@ -96,8 +96,12 @@ public class Tetris{
           return true;
         }
       }
+      for (int i = 0; i < stats.length; i++) {
+        System.out.print(stats[i] + ", ");
+      }
+      System.out.println();
     }
-    debugBlocks();
+    //debugBlocks(); DEBUGGGGGGG
     return lose();
   }
   boolean willfall(Piece cool){
@@ -185,11 +189,11 @@ public class Tetris{
         if (blocks[i][j] != null){
           blocks[i][j].display();
         }
-      }
+      } //<>//
     }
   }
   void displayNumbers(String bob, int x, int y){
-    char[] sam = bob.toCharArray(); //<>//
+    char[] sam = bob.toCharArray(); //<>// //<>//
     for (int i = 0; i < sam.length; i++){
       PImage john = numbers.get((sam[i] - '0') * 40, 0, 40, 35);
       for (int j = 0; j < john.pixels.length; j++){
