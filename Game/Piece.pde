@@ -10,9 +10,13 @@ public class Piece{
   int gameWidth = 10;
   int gameHeight = 40;
   int num;
+  int tint;
+  boolean up;
   ArrayList<Integer> bottom;
   public Piece(int num){
     topleft = new int[]{140, 0};
+    tint = 128;
+    up = true;
     this.num = num;
     if (num == 1){
       blocks = new Block[3][3];
@@ -156,6 +160,28 @@ public class Piece{
         }
       }
     }
+  }
+  void fancydisplay(){
+    for (int i = 0; i < blocks.length; i++){
+        for (int j = 0; j < blocks[0].length; j++){
+          if (blocks[i][j] != null){
+            noStroke();
+            square(blocks[i][j].getX(), blocks[i][j].getY(), size);
+          }
+        }
+      }
+    tint(255, tint);
+    display();
+    if (tint == 192 || tint == 64){
+      up = !up;
+    }
+    if (up){
+      tint += 2;
+    }
+    else{
+      tint -= 2;
+    }
+    tint(255, 255);
   }
   void findtopleft(){
     wherex = 0;

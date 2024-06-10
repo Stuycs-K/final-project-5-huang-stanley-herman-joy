@@ -25,6 +25,7 @@ public class Tetris{
     //System.out.println(joe.wide + "," + joe.tall);
     //System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
     joe.display();
+    joe2.fancydisplay(); //<>//
     if (willfall(joe)){
       if (millis() > millis + rate){
         joe.fall();
@@ -176,11 +177,9 @@ public class Tetris{
           for (int j = 0; j < blocks.length; j++) {
             if (blocks[j][k-1] != null) {
               blocks[j][k] = new Block(j * size, (k) * size, blocks[j][k-1].design);
-              System.out.println("not null: " + j + ", " + k);
             }
             else {
               blocks[j][k] = null;
-              System.out.println("is null: " + j + ", " + k);
             }
             background(0);
             display();
