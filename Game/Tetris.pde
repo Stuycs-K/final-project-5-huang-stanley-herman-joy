@@ -10,7 +10,7 @@ public class Tetris{
   PImage design1 = loadImage("best1.png");
   int size = 35;
   int rowscleared = 0;
-  int level = 2;
+  int level = 3;
   int[] rates = new int[]{48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
   int rate = rates[Math.min(rowscleared / 10, 29)] * 1000 / 60;
   public Tetris(){
@@ -58,8 +58,8 @@ public class Tetris{
     //System.out.println(joe.wide + "," + joe.tall);
     //System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
     System.out.println(canrotate());
+    joe2.fancydisplay();
     joe.display();
-    joe2.fancydisplay(); //<>//
     if (willfall(joe)){
       if (millis() > millis + rate){
         joe.fall();

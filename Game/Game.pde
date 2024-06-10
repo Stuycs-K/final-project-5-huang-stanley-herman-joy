@@ -61,7 +61,7 @@ void keyPressed(){
   }
 }
   void setup(){
-    size(500, 700);
+    size(1050, 840);
     background(0);
     bob = new Tetris();
   }
