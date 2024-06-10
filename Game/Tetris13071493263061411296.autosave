@@ -11,12 +11,12 @@ public class Tetris{
   PImage design1 = loadImage("best1.png");
   int size = 35;
   int rowscleared = 0;
+  int level = 0;
   int[] rates = new int[]{48, 43, 38, 33, 28, 24, 20, 16, 12, 9, 9, 9, 6, 6, 6, 6, 5, 5, 5, 5, 4, 4, 4, 4, 4, 3, 3, 3, 2, 1};
   int rate = rates[Math.min(rowscleared / 10, 29)] * 1000 / 60;
   PImage linenumbers = loadImage("numbers.png");
   PImage scorenumbers = loadImage("numbers.png");
   int[] stats = new int[]{0, 0, 0, 0, 0, 0, 0};
-  int level;
   public Tetris(int top){
     linenumbers.resize(400, 28);
     scorenumbers.resize(400, 39);
@@ -332,14 +332,12 @@ public class Tetris{
   }
   void updateBlocks(){
     for (int i = 0; i < blocks.length; i++){
-      for (int j = 0; j < blocks[0].length; j++){
+      for (int j = 0; j < blocks.length; j++){
         if (blocks[i][j] != null){
-          blocks[i][j].level = level;
-          blocks[i][j].updateColor();
+          blocks[i][j].updateColor(level);
         }
       }
     }
-    display();
   }
   int randomPiece(){
     return (int)(Math.random() * 7);
@@ -369,12 +367,7 @@ public class Tetris{
         }
       }
     }
-    int temp = rowscleared;
     rowscleared += cool;
-    if (temp != rowscleared){
-      level++;
-      updateBlocks();
-    }
     displayNumbers("" + rowscleared, 588, 24);
     if (cool == 1)
       cool = 40;
@@ -386,6 +379,11 @@ public class Tetris{
       cool = 1200;
     points += cool * (level + 1);
     displayScore("" + points, 760, 237);
+    int temp = level;
+    level = rowscleared / 10;
+    if (temp != level){
+      updateBlocks();
+    }
     rate = rates[Math.min(level, 29)] * 1000 / 60;
     displayLevel("" + level % 1000, 790, 709);
     displayPieceStats();

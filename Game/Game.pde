@@ -49,6 +49,7 @@ void keyPressed(){
       bob.displayPieceStats();
       bob.updateBlocks();
       bob.newPiece();
+      bob.rate = bob.rates[Math.min(bob.level, 29)] * 1000 / 60;
     }
     if (key == 's') {
       bob.plunge(bob.joe);
