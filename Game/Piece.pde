@@ -7,12 +7,9 @@ public class Piece{
   int wide, tall;
   int wherex, wherey;
   int size;
-  int gameWidth = 10;
-  int gameHeight = 40;
   int num;
   int tint;
   boolean up;
-  ArrayList<Integer> bottom;
   public Piece(int num, int level, int[] topleft, int size){
     color newColor;
     this.size = size;
