@@ -13,16 +13,17 @@ public class Tetris{
   int rowscleared = 0;
   int level = 0;
   int[] rates = new int[]{48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
-  int rate = rates[Math.min(level, 29)] * 1000 / 60;
+  int rate = rates[Math.min(rowscleared / 10, 29)] * 1000 / 60;
   PImage linenumbers = loadImage("numbers.png");
   PImage scorenumbers = loadImage("numbers.png");
   int increase = 10;
+  int[] stats = new int[]{0, 0, 0, 0, 0, 0, 0};
   public Tetris(int top){
     linenumbers.resize(400, 28);
     scorenumbers.resize(400, 39);
     blocks = new Block[10][20];
-    joe = new Piece(randomPiece(), level, new int[]{490, 105});
-    joe2 = new Piece(joe.num, level, new int[]{490, 105});
+    joe = new Piece(randomPiece(), level, new int[]{490, 105}, size);
+    joe2 = new Piece(joe.num, level, new int[]{490, 105}, size);
     findNextPiece();
     plunge(joe2);
     joe.display();
@@ -31,11 +32,12 @@ public class Tetris{
     rowscleared = 0;
     points = 0;
     this.top = top;
+    stats = new int[]{0, 0, 0, 0, 0, 0, 0};
     PImage playfield = loadImage("play.png");
     playfield.resize(410, 755);
     image(playfield, 320, 78);
     fill(0);
-    noStroke();
+    noStroke(); //<>//
     rect(350, 105, 350, 700);
     PImage nextpiece = loadImage("next.png");
     nextpiece.resize(220, 270);
@@ -52,6 +54,25 @@ public class Tetris{
     image(score, 732, 3);
     displayScore("" + top, 760, 120);
     displayScore("" + points, 760, 237);
+    PImage statistics = loadImage("statistics.png");
+    statistics.resize(315, 650);
+    image(statistics, 3, 183);
+    rect(60, 308, 220, 480);
+    stats[joe.num]++;
+    for (int i = 0; i < 7; i++){
+      int x = 70;
+      int y = 308;
+      if (i == 3){
+        x = 82;
+      }
+      if (i == 6){
+        x = 55;
+        y = 285;
+      }
+      Piece joestat = new Piece(i, level, new int[]{x, y + i * 67}, 25);
+      joestat.display();
+      displayStats("" + stats[i], 157, 319 + i * 65);
+    }
   }
   void findNextPiece(){
     rect(765, 450, 150, 155);
@@ -68,13 +89,10 @@ public class Tetris{
     else{
       x = 787;
     }
-    nextPiece = new Piece(random, level, new int[]{x, y});
+    nextPiece = new Piece(random, level, new int[]{x, y}, size);
     nextPiece.display();
   }
   boolean run(){
-    //System.out.println(joe.wide + "," + joe.tall);
-    //System.out.println(joe.topleft[0] + "," + joe.topleft[1]);
-    System.out.println(canrotate());
     joe2.fancydisplay();
     joe.display();
     if (willfall(joe)){
@@ -97,8 +115,10 @@ public class Tetris{
           }
         }
         clearRow();
-        joe = new Piece(nextPiece.num, level, new int[]{490, 105}); //<>//
-        joe2 = new Piece(joe.num, level, new int[]{490, 105});
+        joe = new Piece(nextPiece.num, level, new int[]{490, 105}, size);
+        joe2 = new Piece(joe.num, level, new int[]{490, 105}, size);
+        stats[joe.num]++;
+      displayStats("" + stats[joe.num], 157, 319 + joe.num * 65);
         findNextPiece();
         joe.display();
         plunge(joe2);
@@ -106,8 +126,12 @@ public class Tetris{
           return true;
         }
       }
+      for (int i = 0; i < stats.length; i++) {
+        System.out.print(stats[i] + ", ");
+      }
+      System.out.println();
     }
-    debugBlocks();
+    //debugBlocks(); DEBUGGGGGGG
     return lose();
   }
   boolean willfall(Piece cool){
@@ -165,7 +189,7 @@ public class Tetris{
   void plunge(Piece cool){
     while (willfall(cool)){
       cool.fall();
-    }
+    } //<>//
   }
   boolean canrotate(){
     int x = (joe.topleft[0] / size) - joe.wherex - 10;
@@ -195,10 +219,13 @@ public class Tetris{
         if (blocks[i][j] != null){
           blocks[i][j].display();
         }
-      }
+      } //<>//
     }
   }
   void displayNumbers(String bob, int x, int y){
+    while (bob.length() < 3){
+      bob = "0" + bob;
+    }
     char[] sam = bob.toCharArray();
     for (int i = 0; i < sam.length; i++){
       PImage john = linenumbers.get((sam[i] - '0') * 40, 0, 40, 35);
@@ -207,9 +234,21 @@ public class Tetris{
           john.pixels[j] = color(230, 230, 230);
         }
       }
-      if (i == 2){
-        john = john.get(0, 0, 37, 35);
+      if (sam[i] == '0'){
+        image(john, x + i * 40 + 2, y);
       }
+      else{
+        image(john, x + i * 40, y);
+      }
+    }
+  }
+  void displayStats(String bob, int x, int y){
+    while (bob.length() < 3){
+      bob = "0" + bob;
+    }
+    char[] sam = bob.toCharArray();
+    for (int i = 0; i < sam.length; i++){
+      PImage john = scorenumbers.get((sam[i] - '0') * 40, 0, 40, 35);
       if (sam[i] == '0'){
         image(john, x + i * 40 + 2, y);
       }
@@ -269,7 +308,7 @@ public class Tetris{
         for (int k = i; k > 0; k--) {
           for (int j = 0; j < blocks.length; j++) {
             if (blocks[j][k-1] != null) {
-              blocks[j][k] = new Block((j + 10) * size, (k + 3) * size, blocks[j][k-1].design);
+              blocks[j][k] = new Block((j + 10) * size, (k + 3) * size, blocks[j][k-1].design, 35);
             }
             else {
               blocks[j][k] = null;
@@ -293,6 +332,7 @@ public class Tetris{
     points += cool * (level + 1);
     displayScore("" + points, 760, 237);
     level = rowscleared / increase;
+    rate = rates[Math.min(rowscleared / 10, 29)] * 1000 / 60;
   }
   boolean lose() {
     for (int i = 0; i < blocks.length; i++) {

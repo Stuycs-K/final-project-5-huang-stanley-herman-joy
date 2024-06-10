@@ -1,9 +1,8 @@
 public class Block{
-  final static int size = 35;
   PImage design;
   int xcor;
   int ycor;
-  public Block(int x, int y, PImage image){
+  public Block(int x, int y, PImage image, int size){
     xcor = x;
     ycor = y;
     design = image;
