@@ -368,9 +368,9 @@ public class Tetris{
         }
       }
     }
-    int temp = rowscleared;
+    int temp = rowscleared % 10;
     rowscleared += cool;
-    if (temp != rowscleared){
+    if (temp != rowscleared % 10){
       level++;
       updateBlocks();
     }
