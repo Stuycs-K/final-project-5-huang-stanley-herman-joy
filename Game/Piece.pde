@@ -204,7 +204,7 @@ public class Piece{
     }
   }  
   void rotate(){
-    if (topleft[0] / size - 10 < 21 - blocks[0].length && topleft[1] / size  - 2 < 20 - blocks.length){
+    if (topleft[0] / size - 10 < 21 - blocks[0].length && topleft[1] / size - 3 < 20 - blocks.length){
       topleft[0] -= wherex * size;
       topleft[1] -= wherey * size;
       Block[][] newblocks = new Block[blocks[0].length][blocks.length];

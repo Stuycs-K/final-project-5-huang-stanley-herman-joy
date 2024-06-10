@@ -82,6 +82,7 @@ public class Tetris{
     nextPiece.display();
   }
   boolean run(){
+    System.out.println(canrotate());
     joe2.fancydisplay();
     joe.display();
     if (willfall(joe)){
@@ -184,8 +185,8 @@ public class Tetris{
           square(joe2.blocks[i][j].getX(), joe2.blocks[i][j].getY(), size);
           joe2.blocks[i][j].setX(joe.blocks[i][j].getX());
           joe2.blocks[i][j].setY(joe.blocks[i][j].getY());
-        }
-      } //<>//
+        } //<>//
+      }
     }
   }
   void plunge(Piece cool){ //<>//
@@ -211,14 +212,14 @@ public class Tetris{
         if (joe.blocks[j][i] != null && blocks[joe.topleft[0] / 35 + j - 10][joe.topleft[1] / 35 + i - 3] != null){
           return false;
         }
-      }
-    } //<>//
+      } //<>//
+    }
     return true;
   }
   void display(){ //<>//
     for (int i = 0; i < blocks.length; i++){
-      for (int j = 0; j < blocks[0].length; j++){
-        if (blocks[i][j] != null){ //<>//
+      for (int j = 0; j < blocks[0].length; j++){ //<>//
+        if (blocks[i][j] != null){
           blocks[i][j].display();
         }
       } //<>//
