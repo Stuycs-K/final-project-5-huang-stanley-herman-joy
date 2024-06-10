@@ -98,6 +98,8 @@ Changed background to black, pieces spawn horizontally oriented, added sprites f
 displayed the stats for the pieces, made shortcuts to higher levels (faster speed)
 e sure they didn't go out of the screen
 
+## Stanley Huang
+
 ### 5/27
 
 wrote a buggy plunge
@@ -141,7 +143,3 @@ show where the piece will end up if it keeps falling
 ### 6/9
 
 the piece's future is displayed really coolly, made the size of sketch bigger, 10 different color schemes that cycles, skip level button that updates all color schemes, display statistics on how many times a piece spawned, score, top score, lines cleared, next piece
-
-### 5/26
-
-Wrote rotate(), fall() and moveleft()/moveright() works for bigger Pieces, Pieces that reach the bottom stay on screen
