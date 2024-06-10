@@ -49,19 +49,19 @@ void keyPressed(){
   }
   if (key == ENTER) {
       background(0);
-      bob = new Tetris();
+      int top = bob.top;
+      bob = new Tetris(top);
       bob.display();
       done = false;
   }
   if (key == ' ') {
     start = true;
     background(0);
-    bob = new Tetris();
+    bob = new Tetris(0);
   }
 }
   void setup(){
     size(1050, 840);
-    bob = new Tetris();
     background(0);
     startImage = loadImage("start.png");
     image(startImage, 0, -30, 1050, 870);

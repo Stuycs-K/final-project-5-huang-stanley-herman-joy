@@ -13,10 +13,11 @@ public class Tetris{
   int rowscleared = 0;
   int level = 0;
   int[] rates = new int[]{48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
-  int rate = rates[Math.min(rowscleared / 10, 29)] * 1000 / 60;
+  int rate = rates[Math.min(level, 29)] * 1000 / 60;
   PImage linenumbers = loadImage("numbers.png");
   PImage scorenumbers = loadImage("numbers.png");
-  public Tetris(){
+  int increase = 10;
+  public Tetris(int top){
     linenumbers.resize(400, 28);
     scorenumbers.resize(400, 39);
     blocks = new Block[10][20];
@@ -29,6 +30,7 @@ public class Tetris{
     millis = millis();
     rowscleared = 0;
     points = 0;
+    this.top = top;
     PImage playfield = loadImage("play.png");
     playfield.resize(410, 755);
     image(playfield, 320, 78);
@@ -187,9 +189,9 @@ public class Tetris{
     }
     return true;
   }
-  void display(){
+  void display(){ //<>//
     for (int i = 0; i < blocks.length; i++){
-      for (int j = 0; j < blocks[0].length; j++){ //<>//
+      for (int j = 0; j < blocks[0].length; j++){
         if (blocks[i][j] != null){
           blocks[i][j].display();
         }
@@ -290,6 +292,7 @@ public class Tetris{
       cool = 1200;
     points += cool * (level + 1);
     displayScore("" + points, 760, 237);
+    level = rowscleared / increase;
   }
   boolean lose() {
     for (int i = 0; i < blocks.length; i++) {
